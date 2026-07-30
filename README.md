@@ -25,6 +25,17 @@ Multi-dialect and pan-Arabic resources are welcome; the map records the Tunisian
 
 Of the 122 access-tagged resources: **90 open** · 11 paywalled · 10 paper-only · 9 on request · 2 gated. Every entry links to a verifiable source; uncertain Tunisian coverage is flagged rather than dropped.
 
+## Recently added
+
+*Newest first. Contributed entries are credited to whoever pointed them out.*
+
+| Date | Entry | Added by |
+|---|---|---|
+| 2026-07 | [whisper-large-v3-arabic-dialectal-v2](MODELS.md#asr-models) — 13-dialect ASR with **per-dialect WER; Tunisian is hardest of the 13 (0.478)** | [Ahmed Wasfy](https://huggingface.co/oddadmix) |
+| 2026-07 | [lahgtna-omnivoice-v2](MODELS.md#tts-models) — multi-dialect Arabic TTS, Tunisian supported | [Ahmed Wasfy](https://huggingface.co/oddadmix) |
+| 2026-07 | [lahgtna-v3-small](SPEECH.md) — dialect-balanced ASR set, 200 Tunisian test clips | [Ahmed Wasfy](https://huggingface.co/oddadmix) |
+| 2026-07 | Corrected **CMN2 / NIST SRE** — the ~396h figure covers Tunisian *and* English audio; Tunisian-only share unpublished | maintainer |
+
 ## Contents
 
 - [Text corpora (raw / web / social)](#text-corpora-raw--web--social)
