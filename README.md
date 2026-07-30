@@ -1,21 +1,29 @@
 # Tunisian Arabic NLP Resources
 
-![Entries](https://img.shields.io/badge/entries-131-blue) ![Open resources](https://img.shields.io/badge/open-87-brightgreen) ![License](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey) ![PRs welcome](https://img.shields.io/badge/PRs-welcome-orange)
+![Entries](https://img.shields.io/badge/entries-134-blue) ![Open resources](https://img.shields.io/badge/open-90-brightgreen) ![License](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey) ![PRs welcome](https://img.shields.io/badge/PRs-welcome-orange)
 
 A curated list of datasets, models, tools, and papers for the natural language processing of **Tunisian Arabic** (Tunisian Derja / Tounsi / تونسي, ISO 639-3 code **`aeb`**).
 
 The goal is to be the single most complete inventory of what exists for Tunisian NLP: text and speech, open and gated, so that researchers, students, and engineers can find what is out there and see clearly where the gaps are.
+
+**This is meant to stay current, and that only works if it isn't maintained by one person.** If you know a resource that is missing, or you built one, or something here is wrong or out of date:
+
+- [**Add a resource**](../../issues/new?template=add-resource.yml) — paste a link, that's enough; formatting and verification are my job
+- [**Report something wrong**](../../issues/new?template=correction.yml) — dead links and overstated numbers make this worse than useless
+- Or open a pull request directly — see [CONTRIBUTING.md](CONTRIBUTING.md)
+
+Multi-dialect and pan-Arabic resources are welcome; the map records the Tunisian portion honestly rather than counting the whole thing.
 
 ## At a glance
 
 | | Entries | Where |
 |---|---|---|
 | Text datasets, benchmarks, lexicons & papers | 66 | this file |
-| Speech corpora (ASR, SLU, translation, TTS) | 23 | [SPEECH.md](SPEECH.md) |
-| Pretrained models (LLMs, encoders, ASR, TTS) | 12 | [MODELS.md](MODELS.md) |
+| Speech corpora (ASR, SLU, translation, TTS) | 24 | [SPEECH.md](SPEECH.md) |
+| Pretrained models (LLMs, encoders, ASR, TTS) | 14 | [MODELS.md](MODELS.md) |
 | Researchers, labs & companies | 30 | [PEOPLE.md](PEOPLE.md) |
 
-Of the 119 access-tagged resources: **87 open** · 11 paywalled · 10 paper-only · 9 on request · 2 gated. Every entry links to a verifiable source; uncertain Tunisian coverage is flagged rather than dropped.
+Of the 122 access-tagged resources: **90 open** · 11 paywalled · 10 paper-only · 9 on request · 2 gated. Every entry links to a verifiable source; uncertain Tunisian coverage is flagged rather than dropped.
 
 ## Contents
 

@@ -68,12 +68,18 @@ Speech corpora (ASR, spoken language understanding, speech translation), text-to
 - **[open]** (Apache 2.0).
 
 ### [CALL MY NET 2 (CMN2) / 2018 NIST SRE (LDC2020S04)](https://catalog.ldc.upenn.edu/LDC2020S04)
-- ~396 hours of Tunisian Arabic conversational telephone speech (PSTN + VOIP, 8 kHz), 400+ speakers; collected in Tunis for speaker recognition (NIST SRE18/19).
-- **[paywalled]** (LDC).
+- Tunisian Arabic conversational telephone speech (PSTN + VOIP, 8 kHz) collected in Tunis via the Call My Net 2 protocol, plus English web-video audio from the VAST project. LDC gives **~396 hours for the release as a whole** — the Tunisian-only portion is not stated separately, so treat 396h as an upper bound, not a Tunisian figure.
+- Collected for **speaker recognition** (NIST SRE18/19), not ASR or language modelling: no transcripts of the kind ASR training needs.
+- **[paywalled]** (LDC; fee shown only after login).
 
 ### [Arbi-Houssem/Tunisian_dataset_STT-TTS15s_filtred1.0](https://huggingface.co/datasets/Arbi-Houssem/Tunisian_dataset_STT-TTS15s_filtred1.0)
 - ~3h50m, 1,029 clips, up to 18 speakers, timestamped Derja transcripts (YouTube-sourced). Usable for STT and TTS. 2024.
 - **[open]** (HuggingFace).
+
+### [oddadmix/lahgtna-v3-small](https://huggingface.co/datasets/oddadmix/lahgtna-v3-small)
+- Dialect-**balanced** multi-dialect Arabic ASR set: ~54.6k rows, 52k train / 2.6k test, 13 dialects including Tunisian, seed 42, undiacritized `clean_text` field. Ahmed Wasfy (oddadmix), 2026.
+- Tunisian is 200 clips in the held-out test split — small, but it is the balance that makes it useful: it supports **like-for-like comparison of Tunisian against twelve other Arabic dialects under identical conditions**, which very few Tunisian resources allow. See the per-dialect WER table in [MODELS.md](MODELS.md#asr-models).
+- Part of the wider [Arabic Voice Collection](https://huggingface.co/collections/oddadmix/arabic-voice-collection). **[open]**.
 
 ---
 

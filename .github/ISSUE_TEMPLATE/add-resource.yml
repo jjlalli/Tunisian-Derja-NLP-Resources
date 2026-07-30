@@ -1,0 +1,81 @@
+name: Add a resource
+description: Suggest a dataset, model, corpus, lexicon, benchmark, paper, or person/lab to add to the map.
+title: "[add] "
+labels: ["addition"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for adding to the map. You do not need to write the entry yourself —
+        paste the link and whatever you know, and I will format and verify it.
+
+  - type: input
+    id: link
+    attributes:
+      label: Link
+      description: GitHub, Hugging Face, paper, catalog record, or project page.
+      placeholder: https://
+    validations:
+      required: true
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What is it?
+      options:
+        - Text dataset / corpus
+        - Speech corpus
+        - Model (LLM, encoder, ASR, TTS)
+        - Lexicon / dictionary / wordnet
+        - Benchmark / evaluation set
+        - Paper or survey
+        - Person, lab, or company
+        - Something else
+    validations:
+      required: true
+
+  - type: dropdown
+    id: access
+    attributes:
+      label: How do you get it?
+      description: Resources that exist but can't be downloaded still belong here — they just get an honest tag.
+      options:
+        - open — freely downloadable, no login
+        - gated — needs the owner's approval
+        - on request — contact the authors
+        - paywalled — publisher or LDC fee
+        - paper only — described in a paper, no data found
+        - not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What should people know about it?
+      description: |
+        Anything you have: size (hours, sentences, rows), year, creators, licence,
+        what it's for. Rough is fine.
+      placeholder: |
+        e.g. ~20 hours, 187 speakers, social media + broadcast, 2026, CC-BY-4.0
+    validations:
+      required: false
+
+  - type: textarea
+    id: tunisian_share
+    attributes:
+      label: If it's pan-Arabic or Maghrebi, what's the Tunisian part?
+      description: |
+        Multi-dialect resources are welcome. The map just records the Tunisian portion
+        honestly rather than counting the whole thing as Tunisian.
+      placeholder: e.g. Tunisian is 1 of 13 dialects; 200 clips in the test split
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: verified
+    attributes:
+      label: Verification
+      options:
+        - label: I have opened this link myself and it works.
+          required: true

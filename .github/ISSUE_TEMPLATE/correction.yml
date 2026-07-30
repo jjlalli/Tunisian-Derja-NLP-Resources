@@ -1,0 +1,41 @@
+name: Report something wrong
+description: A dead link, a wrong number, a mislabelled access tag, or a resource described inaccurately.
+title: "[fix] "
+labels: ["correction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Corrections are as valuable as additions. If a number is overstated or a link
+        has died, the map is worse than useless — it's misleading. Please tell me.
+
+  - type: input
+    id: entry
+    attributes:
+      label: Which entry?
+      description: Name it, or paste the link to the section.
+      placeholder: e.g. CALL MY NET 2 (CMN2), in SPEECH.md
+    validations:
+      required: true
+
+  - type: dropdown
+    id: problem
+    attributes:
+      label: What's wrong?
+      options:
+        - Dead or broken link
+        - Wrong size / hours / count
+        - Wrong access tag (it's more or less available than stated)
+        - Tunisian coverage overstated or understated
+        - Wrong authors, year, or licence
+        - Something else
+    validations:
+      required: true
+
+  - type: textarea
+    id: correction
+    attributes:
+      label: What should it say instead?
+      description: A source I can check is ideal, but a pointer is enough.
+    validations:
+      required: true

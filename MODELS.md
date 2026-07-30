@@ -75,6 +75,12 @@ Not Tunisian-specific — Tunisian appears only as part of pan-Arabic dialect da
 ### [TuniSpeech-AI/whisper-tunisian-dialect](https://huggingface.co/TuniSpeech-AI/whisper-tunisian-dialect)
 - Whisper-large-v2 fine-tuned (LoRA merged, ~2B params). Sghaier, Bellagha, Zrigui, 2026. WER 24.74 / CER 8.32 on TuniSpeech-21h. [Demo](https://huggingface.co/spaces/TuniSpeech-AI/TuniSpeech-Model). cc-by-nc-4.0. **[open]** (weights).
 
+### [oddadmix/whisper-large-v3-arabic-dialectal-v2](https://huggingface.co/oddadmix/whisper-large-v3-arabic-dialectal-v2)
+- Whisper-large-v3 (1.54B) fine-tuned for **13 Arabic dialects**, Tunisian among them. Ahmed Wasfy (oddadmix), 2026. Trained on [`oddadmix/lahgtna-v3-small`](https://huggingface.co/datasets/oddadmix/lahgtna-v3-small) (52k train / 2.6k test, dialect-balanced).
+- **The per-dialect evaluation is the useful part for Tunisian NLP.** On a balanced test of 200 held-out clips per dialect, Tunisian is the hardest of all 13: **WER 0.478 / CER 0.193**, against an overall 0.320 and Saudi/Gulf 0.169. Ordering (easiest → hardest): Gulf 0.169, Iraqi 0.254, Egyptian 0.271, Syrian 0.272, Palestinian 0.301, Yemeni 0.304, Lebanese 0.317, Moroccan 0.340, Libyan 0.343, Bahraini 0.348, Algerian 0.386, Sudanese 0.399, **Tunisian 0.478**.
+- The author reports the same ordering across eight fine-tuned models (Whisper large/turbo/medium/small, Nemotron, Qwen3-ASR, Cohere), i.e. Maghrebi-hardest is model-independent on this test set.
+- Apache-2.0. **[open]**. Sibling models in the [Arabic ASR Models collection](https://huggingface.co/collections/oddadmix/arabic-asr-models) (13 items).
+
 ### Classic ASR systems (papers)
 - [ASR system for Tunisian dialect (Kaldi, TARIC), LRE 2018](https://link.springer.com/article/10.1007/s10579-017-9402-y) — Masmoudi et al. WER 22.6% on TARIC. **[paywalled]** (preprint on [ResearchGate](https://www.researchgate.net/publication/319988998)).
 - [Tunisian Dialectal End-to-end ASR based on DeepSpeech (Procedia 2021)](https://www.sciencedirect.com/science/article/pii/S1877050921011984) — WER 24.4%. **[open]**.
@@ -84,6 +90,11 @@ Note: general Arabic XLSR/Whisper models (e.g., jonatasgrosman/wav2vec2-large-xl
 ---
 
 ## TTS models
+
+### [oddadmix/lahgtna-omnivoice-v2 (لهجتنا)](https://huggingface.co/oddadmix/lahgtna-omnivoice-v2)
+- Multi-dialect Arabic TTS built on OmniVoice / Qwen3-0.6B-Base (0.6B params), aiming at a single unified model across Arabic dialects. Ahmed Wasfy (oddadmix), 2026. **Tunisia is ticked on the dialect roadmap**, alongside Egypt, Saudi, Morocco, Iraq, Sudan, Palestine, Lebanon, Syria, Libya, Bahrain, Yemen, Algeria.
+- Trained on roughly **250 hours of speech across all supported dialects** (author's figure, in conversation); the Tunisian-only share is not published. Supports diacritized Arabic input for pronunciation. Code: [Oddadmix/Lahgtna-OmniVoice](https://github.com/Oddadmix/Lahgtna-OmniVoice). [Demo Space](https://huggingface.co/spaces/oddadmix/Lahgtna-OmniVoice-Demo).
+- **[open]**. Per-dialect TTS quality for Tunisian is not separately evaluated — treat as "Tunisian supported", not "Tunisian validated".
 
 - [TunArTTS](https://github.com/elyadata/TunArTTS) baselines (Tacotron2, FastSpeech2) — see [SPEECH.md](SPEECH.md). **[open]** (research).
 - [Habibi-TTS](https://github.com/SWivid/Habibi-TTS) — multi-dialect Arabic TTS; Tunisian coverage unconfirmed. **[open]**.
