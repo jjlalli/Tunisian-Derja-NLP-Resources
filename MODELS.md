@@ -9,6 +9,7 @@ Pretrained language models, ASR models, and TTS models for Tunisian Arabic (`aeb
 - [General Arabic models that include Tunisian](#general-arabic-models-that-include-tunisian)
 - [ASR models](#asr-models)
 - [TTS models](#tts-models)
+- [Dialect identification](#dialect-identification)
 
 ---
 
@@ -100,3 +101,13 @@ Note: general Arabic XLSR/Whisper models (e.g., jonatasgrosman/wav2vec2-large-xl
 - [Habibi-TTS](https://github.com/SWivid/Habibi-TTS) — multi-dialect Arabic TTS; Tunisian coverage unconfirmed. **[open]**.
 - Community/commercial Tunisian TTS (SpeechGen, community fine-tunes) — see [SPEECH.md](SPEECH.md#text-to-speech-tts).
 
+---
+
+## Dialect identification
+
+### [oddadmix/dialect-router-v0.2](https://huggingface.co/oddadmix/dialect-router-v0.2)
+- Arabic dialect identification: text classification into **15 labels — 13 Arabic dialects, MSA, and English**. Tunisian is label `tn`. Ahmed Wasfy (oddadmix), 2026. Fine-tune of [`asafaya/bert-mini-arabic`](https://huggingface.co/asafaya/bert-mini-arabic); **11.6M parameters**, 512-token input. Built as the routing backbone of the Lahgtna TTS pipeline, but usable standalone.
+- Reported on the model card: **accuracy 0.9359, macro-F1 0.9052** across all 15 classes. **The macro-F1 is the figure to quote** — with uneven label distribution, overall accuracy flatters. **No per-dialect breakdown is published, so Tunisian-specific performance is unknown.**
+- The card's own stated limitations land on Tunisian specifically: *"Code-switched text (e.g. Arabic + French in Maghrebi dialects) may confuse the classifier; heavily mixed input may be routed to `en`"* — and Tunisian is named in the adjacent-dialect confusion group (`ma / dz / tn`). Both matter for Derja, which is routinely French-code-switched.
+- v0.2 expands 10 → 13 dialects (adds Bahraini, Algerian, Yemeni), adds an English label, renames `mo` → `ma`.
+- MIT licence. **[open]**.

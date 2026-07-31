@@ -1,6 +1,6 @@
 # Tunisian Arabic NLP Resources
 
-![Entries](https://img.shields.io/badge/entries-134-blue) ![Open resources](https://img.shields.io/badge/open-90-brightgreen) ![License](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey) ![PRs welcome](https://img.shields.io/badge/PRs-welcome-orange)
+![Entries](https://img.shields.io/badge/entries-135-blue) ![Open resources](https://img.shields.io/badge/open-91-brightgreen) ![License](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey) ![PRs welcome](https://img.shields.io/badge/PRs-welcome-orange)
 
 A curated list of datasets, models, tools, and papers for the natural language processing of **Tunisian Arabic** (Tunisian Derja / Tounsi / تونسي, ISO 639-3 code **`aeb`**).
 
@@ -23,7 +23,7 @@ Multi-dialect and pan-Arabic resources are welcome; the map records the Tunisian
 | Pretrained models (LLMs, encoders, ASR, TTS) | 14 | [MODELS.md](MODELS.md) |
 | Researchers, labs & companies | 30 | [PEOPLE.md](PEOPLE.md) |
 
-Of the 122 access-tagged resources: **90 open** · 11 paywalled · 10 paper-only · 9 on request · 2 gated. Every entry links to a verifiable source; uncertain Tunisian coverage is flagged rather than dropped.
+Of the 123 access-tagged resources: **91 open** · 11 paywalled · 10 paper-only · 9 on request · 2 gated. Every entry links to a verifiable source; uncertain Tunisian coverage is flagged rather than dropped.
 
 ## Recently added
 
@@ -31,6 +31,7 @@ Of the 122 access-tagged resources: **90 open** · 11 paywalled · 10 paper-only
 
 | Date | Entry | Added by |
 |---|---|---|
+| 2026-07 | [dialect-router-v0.2](MODELS.md#dialect-identification) — 15-label Arabic dialect ID, 11.6M params; **macro-F1 0.905, no per-dialect breakdown published** | [Ahmed Wasfy](https://huggingface.co/oddadmix) |
 | 2026-07 | [whisper-large-v3-arabic-dialectal-v2](MODELS.md#asr-models) — 13-dialect ASR with **per-dialect WER; Tunisian is hardest of the 13 (0.478)** | [Ahmed Wasfy](https://huggingface.co/oddadmix) |
 | 2026-07 | [lahgtna-omnivoice-v2](MODELS.md#tts-models) — multi-dialect Arabic TTS, Tunisian supported | [Ahmed Wasfy](https://huggingface.co/oddadmix) |
 | 2026-07 | [lahgtna-v3-small](SPEECH.md) — dialect-balanced ASR set, 200 Tunisian test clips | [Ahmed Wasfy](https://huggingface.co/oddadmix) |
