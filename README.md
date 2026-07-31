@@ -154,6 +154,8 @@ Related: learning word representations for Tunisian sentiment ([arXiv:2010.06857
 
 ## Dialect identification (text)
 
+*Datasets and benchmarks. **Trained dialect-ID models** are in [MODELS.md § Dialect identification](MODELS.md#dialect-identification).*
+
 ### [MADAR Corpus and Lexicon](https://camel.abudhabi.nyu.edu/madar/)
 - Multi-dialect parallel corpus + city/country dialect ID (26-way). Bouamor et al., LREC 2018. Includes **Tunis** (Corpus-26/Corpus-6) and **Sfax** in the lexicon.
 - Paper: [LREC 2018](https://aclanthology.org/L18-1535/). **[open]** (free research license via form).

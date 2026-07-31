@@ -105,6 +105,8 @@ Note: general Arabic XLSR/Whisper models (e.g., jonatasgrosman/wav2vec2-large-xl
 
 ## Dialect identification
 
+*Trained models only. The **datasets and benchmarks** for Arabic dialect ID (MADAR, NADI, IADD, QADI, the LREC 2018 shared task, and Tunisian sub-dialect ID) are in [README.md § Dialect identification (text)](README.md#dialect-identification-text); **speech-based** dialect ID is in [SPEECH.md](SPEECH.md).*
+
 ### [oddadmix/dialect-router-v0.2](https://huggingface.co/oddadmix/dialect-router-v0.2)
 - Arabic dialect identification: text classification into **15 labels — 13 Arabic dialects, MSA, and English**. Tunisian is label `tn`. Ahmed Wasfy (oddadmix), 2026. Fine-tune of [`asafaya/bert-mini-arabic`](https://huggingface.co/asafaya/bert-mini-arabic); **11.6M parameters**, 512-token input. Built as the routing backbone of the Lahgtna TTS pipeline, but usable standalone.
 - Reported on the model card: **accuracy 0.9359, macro-F1 0.9052** across all 15 classes. **The macro-F1 is the figure to quote** — with uneven label distribution, overall accuracy flatters. **No per-dialect breakdown is published, so Tunisian-specific performance is unknown.**
