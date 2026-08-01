@@ -1,6 +1,6 @@
 # Tunisian Arabic NLP Resources
 
-![Entries](https://img.shields.io/badge/entries-135-blue) ![Open resources](https://img.shields.io/badge/open-91-brightgreen) ![License](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey) ![PRs welcome](https://img.shields.io/badge/PRs-welcome-orange)
+![Entries](https://img.shields.io/badge/entries-136-blue) ![Open resources](https://img.shields.io/badge/open-92-brightgreen) ![License](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey) ![PRs welcome](https://img.shields.io/badge/PRs-welcome-orange)
 
 A curated list of datasets, models, tools, and papers for the natural language processing of **Tunisian Arabic** (Tunisian Derja / Tounsi / تونسي, ISO 639-3 code **`aeb`**).
 
@@ -18,12 +18,12 @@ Multi-dialect and pan-Arabic resources are welcome; the map records the Tunisian
 
 | | Entries | Where |
 |---|---|---|
-| Text datasets, benchmarks, lexicons & papers | 66 | this file |
+| Text datasets, benchmarks, lexicons & papers | 67 | this file |
 | Speech corpora (ASR, SLU, translation, TTS) | 24 | [SPEECH.md](SPEECH.md) |
 | Pretrained models (LLMs, encoders, ASR, TTS) | 14 | [MODELS.md](MODELS.md) |
 | Researchers, labs & companies | 30 | [PEOPLE.md](PEOPLE.md) |
 
-Of the 123 access-tagged resources: **91 open** · 11 paywalled · 10 paper-only · 9 on request · 2 gated. Every entry links to a verifiable source; uncertain Tunisian coverage is flagged rather than dropped.
+Of the 124 access-tagged resources: **92 open** · 11 paywalled · 10 paper-only · 9 on request · 2 gated. Every entry links to a verifiable source; uncertain Tunisian coverage is flagged rather than dropped.
 
 ## Recently added
 
@@ -31,6 +31,7 @@ Of the 123 access-tagged resources: **91 open** · 11 paywalled · 10 paper-only
 
 | Date | Entry | Added by |
 |---|---|---|
+| 2026-08 | [tunisian-darija-english](#tunisian-darija-english-dhia-azizi) — 553 provenance-tagged Arabizi↔English pairs, 53 cultural categories + from-scratch MT pipeline | [Dhia Azizi](https://github.com/Dhiadev-tn) |
 | 2026-07 | [dialect-router-v0.2](MODELS.md#dialect-identification) — 15-label Arabic dialect ID, 11.6M params; **macro-F1 0.905, no per-dialect breakdown published** | [Ahmed Wasfy](https://huggingface.co/oddadmix) |
 | 2026-07 | [whisper-large-v3-arabic-dialectal-v2](MODELS.md#asr-models) — 13-dialect ASR with **per-dialect WER; Tunisian is hardest of the 13 (0.478)** | [Ahmed Wasfy](https://huggingface.co/oddadmix) |
 | 2026-07 | [lahgtna-omnivoice-v2](MODELS.md#tts-models) — multi-dialect Arabic TTS, Tunisian supported | [Ahmed Wasfy](https://huggingface.co/oddadmix) |
@@ -291,6 +292,11 @@ The most useful openly available NER building blocks are the **Barcha** gazettee
 - [Rule-Based MT from Tunisian to MSA (Procedia 2020)](https://www.sciencedirect.com/science/article/pii/S1877050920318573) — Sghaier and Zrigui. **[open]**.
 - [FST + seq2seq Transformer Tunisian→MSA (ACM TALLIP 2024)](https://dl.acm.org/doi/10.1145/3681788) — BLEU 56.65 (FST) / 66.07 (transformer). **[paywalled]**.
 - [Phrase-based SMT + 5,000-sentence Tunis↔MSA corpus (IBIMA)](https://ibima.org/accepted-paper/building-a-tunisian-dialect-into-modern-standard-arabic-parallel-corpus-for-a-phrase-based-machine-translation/) — Sghaier and Zrigui. **[on request]**.
+
+### [tunisian-darija-english (Dhia Azizi)](https://huggingface.co/datasets/Dhiadev-tn/tunisian-darija-english)
+- 553 Tunisian Arabizi↔English pairs across 53 cultural categories (louage culture, mawsem el zitoun, bac exam culture, el 3aza w mawt…). Every pair provenance-tagged in a `source` column: 500 self-written by the author (native speaker), 53 field-collected from family and community speakers with documented consent; nothing synthetic. Dhia Azizi, 2026; collection ongoing.
+- Companion repo: [darija-translator](https://github.com/Dhiadev-tn/darija-translator) — a from-scratch ~15.6M-param encoder-decoder with an Arabizi-aware BPE tokenizer (3/7/9/5 as protected markers), pretrained on *cleaned Moroccan* darija ([atlasia/darija_english](https://huggingface.co/datasets/atlasia/darija_english)) and fine-tuned on the Tunisian pairs. Locked test set; BLEU 3.89 reported honestly as the v1 baseline. The Tunisian data is the 553 pairs — the ~36k pretraining pairs are Moroccan-derived.
+- **[open]** (CC BY-NC-SA 4.0 — note the non-commercial clause).
 
 ### Community HuggingFace parallel sets
 - [tunis-ai/tunisian-msa-parallel-corpus](https://huggingface.co/datasets/tunis-ai/tunisian-msa-parallel-corpus) and [tunis-ai/MADAR-TUN](https://huggingface.co/datasets/tunis-ai/MADAR-TUN) (~30k) — Derja↔MSA. Tunisia.AI, 2025. **[open]**.
