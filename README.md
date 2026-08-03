@@ -1,6 +1,6 @@
 # Tunisian Arabic NLP Resources
 
-![Entries](https://img.shields.io/badge/entries-136-blue) ![Open resources](https://img.shields.io/badge/open-92-brightgreen) ![License](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey) ![PRs welcome](https://img.shields.io/badge/PRs-welcome-orange)
+![Entries](https://img.shields.io/badge/entries-136-blue) ![Open resources](https://img.shields.io/badge/open-92-brightgreen) ![License](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey) ![PRs welcome](https://img.shields.io/badge/PRs-welcome-orange) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21779464.svg)](https://doi.org/10.5281/zenodo.21779464)
 
 A curated list of datasets, models, tools, and papers for the natural language processing of **Tunisian Arabic** (Tunisian Derja / Tounsi / تونسي, ISO 639-3 code **`aeb`**).
 
