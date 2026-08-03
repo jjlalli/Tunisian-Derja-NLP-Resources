@@ -4,7 +4,7 @@
 
 A curated list of datasets, models, tools, and papers for the natural language processing of **Tunisian Arabic** (Tunisian Derja / Tounsi / تونسي, ISO 639-3 code **`aeb`**).
 
-Also on Hugging Face: the inventory as a loadable table at [datasets/fatmajlali/tunisian-nlp-resources](https://huggingface.co/datasets/fatmajlali/tunisian-nlp-resources) (regenerated from these files by `build_dataset_csv.py`), and the open Tunisian datasets and models gathered in one place in the [Tunisian Arabic (Derja) collection](https://huggingface.co/collections/fatmajlali/tunisian-arabic-derja-datasets-and-models).
+Also on Hugging Face: the inventory as a loadable table at [datasets/fatmajlali/tunisian-nlp-resources](https://huggingface.co/datasets/fatmajlali/tunisian-nlp-resources) (regenerated from these files by `build-dataset-csv.py`), and the open Tunisian datasets and models gathered in one place in the [Tunisian Arabic (Derja) collection](https://huggingface.co/collections/fatmajlali/tunisian-arabic-derja-datasets-and-models).
 
 The goal is to be the single most complete inventory of what exists for Tunisian NLP: text and speech, open and gated, so that researchers, students, and engineers can find what is out there and see clearly where the gaps are.
 
