@@ -1,0 +1,24 @@
+{
+  "title": "Tunisian Arabic NLP Resources: an access-verified inventory",
+  "description": "An access-verified inventory of natural language processing resources for Tunisian Arabic (Derja, ISO 639-3 aeb): datasets, speech corpora, models, benchmarks and lexicons. Each entry is checked for whether it can actually be obtained (open, on request, paywalled, paper-only or gated), and for multi-dialect resources the Tunisian share is recorded rather than counting the whole set. Maintained on GitHub, where corrections and additions arrive through issue forms.",
+  "upload_type": "dataset",
+  "access_right": "open",
+  "license": "cc-by-4.0",
+  "creators": [
+    {
+      "name": "Jlali, Fatma",
+      "orcid": "0009-0000-3875-7306"
+    }
+  ],
+  "keywords": [
+    "Tunisian Arabic",
+    "Derja",
+    "aeb",
+    "low-resource NLP",
+    "dialectal Arabic",
+    "Arabic dialects",
+    "resource inventory",
+    "speech corpora"
+  ],
+  "language": "eng"
+}

@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+title: "Tunisian Arabic NLP Resources"
+message: "If you use this inventory, please cite it."
+type: dataset
+authors:
+  - given-names: Fatma
+    family-names: Jlali
+    orcid: "https://orcid.org/0009-0000-3875-7306"
+license: CC-BY-4.0
+repository-code: "https://github.com/jjlalli/Tunisian-Derja-NLP-Resources"
+url: "https://github.com/jjlalli/Tunisian-Derja-NLP-Resources"
+abstract: >-
+  An access-verified inventory of natural language processing resources for
+  Tunisian Arabic (Derja, ISO 639-3 aeb): datasets, speech corpora, models,
+  benchmarks and lexicons, each checked for whether it can actually be
+  obtained, with the Tunisian share of multi-dialect resources recorded
+  rather than counted whole.
+keywords:
+  - Tunisian Arabic
+  - Derja
+  - low-resource NLP
+  - dialectal Arabic
+  - resource inventory
