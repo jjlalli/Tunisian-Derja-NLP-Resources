@@ -82,6 +82,13 @@ Not Tunisian-specific — Tunisian appears only as part of pan-Arabic dialect da
 - The author reports the same ordering across eight fine-tuned models (Whisper large/turbo/medium/small, Nemotron, Qwen3-ASR, Cohere), i.e. Maghrebi-hardest is model-independent on this test set.
 - Apache-2.0. **[open]**. Sibling models in the [Arabic ASR Models collection](https://huggingface.co/collections/oddadmix/arabic-asr-models) (13 items).
 
+### [oddadmix/Whisperv3-tunisian-codeswitch](https://huggingface.co/oddadmix/Whisperv3-tunisian-codeswitch)
+- Whisper-large-v3 **full** fine-tune (1.54B params) for Tunisian ↔ French/English **code-switched** ASR, built for **NADI 2026 subtask 1.3**. Ahmed Wasfy (oddadmix), uploaded 28 Jul 2026.
+- Author-reported: validation **WER 17.26 / CER 6.91**; **blind test WER 15.22**, third place on the subtask. Trained on [`FARUKxAUTO/tunisian-asr-cleaned`](SPEECH.md#speech-corpora-asr--slu--speech-translation) (46k, dense TN↔FR code-switch) plus NADI TEDx train replay; 2 epochs, spec-augment, lr 5e-6. Greedy decode with `language="ar"`.
+- **Why it matters here:** it is the counter-evidence to the dialect-difficulty reading of the 13-dialect model above. Tunisian scored worst of 13 there (WER 0.478) on a model split across every dialect; a Tunisian-focused fine-tune with code-switch data reports 15.22 on its own blind test. The gap looks like allocation of training data and capacity, not intrinsic difficulty of the dialect.
+- ⚠️ **Not comparable to the SalahZa code-switched numbers above** — those are TunSwitch-CS, these are the NADI 2026 blind test. Different test sets, no shared reference point published.
+- ⚠️ **No license declared** on the repo (the base Whisper-large-v3 is Apache-2.0, but this fine-tune states nothing), and the card's usage snippet still points at a differently-named repo (`nadi2026-subtask1.3-...-faruk-v7`), so it appears to be a rename or mirror. Weights are present and ungated. **[open]** (weights; licence unstated).
+
 ### Classic ASR systems (papers)
 - [ASR system for Tunisian dialect (Kaldi, TARIC), LRE 2018](https://link.springer.com/article/10.1007/s10579-017-9402-y) — Masmoudi et al. WER 22.6% on TARIC. **[paywalled]** (preprint on [ResearchGate](https://www.researchgate.net/publication/319988998)).
 - [Tunisian Dialectal End-to-end ASR based on DeepSpeech (Procedia 2021)](https://www.sciencedirect.com/science/article/pii/S1877050921011984) — WER 24.4%. **[open]**.

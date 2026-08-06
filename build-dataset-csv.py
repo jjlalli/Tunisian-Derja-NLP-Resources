@@ -6,7 +6,7 @@ import os
 import re
 
 SOURCES = {"README.md": "text", "SPEECH.md": "speech", "MODELS.md": "model"}
-TAGS = ["open", "on request", "paywalled", "paper only", "paper-only", "gated"]
+TAGS = ["open", "on request", "paywalled", "paper only", "paper-only", "gated", "commercial"]
 COLUMNS = ["id", "name", "type", "category", "access", "description", "url", "file"]
 
 
@@ -28,22 +28,28 @@ def parse(filename, kind):
             heading = line[4:].strip()
             link = re.match(r"\[([^\]]+)\]\(([^)]+)\)", heading)
             entry = {
-                "name": link.group(1) if link else heading,
+                "name": link.group(1) if link else plain(heading),
                 "url": link.group(2) if link else "",
                 "type": kind,
                 "category": section,
                 "access": "",
+                "tags": set(),
                 "description": "",
                 "file": filename,
             }
         elif entry:
             if line.startswith("- ") and not entry["description"]:
                 entry["description"] = plain(line[2:])
-            if not entry["access"]:
-                for tag in TAGS:
-                    if f"**[{tag}]**" in line:
-                        entry["access"] = "paper only" if tag == "paper-only" else tag
-                        break
+            if not entry["url"]:
+                # Headings that are plain text keep their links in the body.
+                # Take the first one so no row ships without a URL.
+                found = re.search(r"\]\((https?://[^)]+)\)", line)
+                if found:
+                    entry["url"] = found.group(1)
+            for tag in TAGS:
+                if f"**[{tag}]**" in line:
+                    found_tag = "paper only" if tag == "paper-only" else tag
+                    entry["tags"].add(found_tag)
 
     if entry:
         entries.append(entry)
@@ -62,8 +68,15 @@ def main():
 
     for number, row in enumerate(rows, 1):
         row["id"] = number
-        if not row["access"]:
+        tags = row.pop("tags")
+        # A heading that groups several items can carry several different
+        # access tags; picking the first would be arbitrary, so say so.
+        if len(tags) == 1:
+            row["access"] = tags.pop()
+        elif len(tags) > 1:
             row["access"] = "varies (grouped entry)"
+        else:
+            row["access"] = "not tagged"
 
     with open("resources.csv", "w", newline="", encoding="utf-8") as out:
         writer = csv.DictWriter(out, fieldnames=COLUMNS)

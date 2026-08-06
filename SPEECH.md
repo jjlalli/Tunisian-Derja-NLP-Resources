@@ -81,6 +81,12 @@ Speech corpora (ASR, spoken language understanding, speech translation), text-to
 - Tunisian is 200 clips in the held-out test split — small, but it is the balance that makes it useful: it supports **like-for-like comparison of Tunisian against twelve other Arabic dialects under identical conditions**, which very few Tunisian resources allow. See the per-dialect WER table in [MODELS.md](MODELS.md#asr-models).
 - Part of the wider [Arabic Voice Collection](https://huggingface.co/collections/oddadmix/arabic-voice-collection). **[open]**.
 
+### [FARUKxAUTO/tunisian-asr-cleaned](https://huggingface.co/datasets/FARUKxAUTO/tunisian-asr-cleaned)
+- Tunisian ASR set, **46,034 train / 5,415 validation / 2,707 test** (54,156 rows), 16 kHz audio paired with a `sentence` transcript. ~15.7 GB. Uploaded 16 Mar 2026. On size alone this is one of the largest Tunisian ASR sets listed here, and at 82 downloads it is essentially undiscovered.
+- Identified as the training data behind [oddadmix/Whisperv3-tunisian-codeswitch](MODELS.md#asr-models), where Ahmed Wasfy describes it as **dense Tunisian↔French code-switch**. That characterisation comes from the model card, not from this dataset's own documentation.
+- ⚠️ **Flagged, not vouched for.** The repo has **no dataset card, no license, and no stated provenance** — the author `FARUKxAUTO` publishes nothing else identifying. Given the size, it may aggregate or re-clean existing corpora (TunSwitch, TEDxTN, Common Voice and others are all plausible components), which would mean it double-counts resources already listed above. **Anyone using it should establish provenance first**, and it is recorded here as an unverified entry rather than dropped, per this registry's practice of flagging uncertainty instead of hiding it.
+- Ungated, downloadable, parquet. **[open]** (access only; licence and provenance unstated).
+
 ---
 
 ## Text-to-speech (TTS)
@@ -120,7 +126,7 @@ Speech corpora (ASR, spoken language understanding, speech translation), text-to
 
 ### [NADI 2025 — First Multidialectal Arabic Speech Processing Shared Task](https://arxiv.org/abs/2509.02038)
 - Subtask 1: spoken dialect ID (built on ADI-20, so includes Tunisian); Subtask 2: multidialectal ASR; Subtask 3: diacritic restoration. Talafha et al., 2025.
-- Winning system: [ELYADATA & LIA at NADI 2025 (arXiv:2511.10090)](https://arxiv.org/abs/2511.10090) — ADI 1st (79.83%), ASR 2nd.
+- Winning system: [ELYADATA & LIA at NADI 2025 (arXiv:2511.10090)](https://arxiv.org/abs/2511.10090) — ADI 1st (79.83%), ASR 2nd. **[open]** (task papers; task data via the organizers).
 
 ### [NADI 2026 — Multidialectal Arabic Speech Processing](https://nadi.dlnlp.ai/2026/)
 - Speech-focused, and strongly Tunisian-relevant. Tasks include country-level / mixed / **code-switched ASR** (subtask 1.3 is Tunisian⇄English⇄French code-switching, Tunisian matrix language, ~38h train + 1h dev), spoken dialect ID, dialectal TTS, spoken language translation (8 dialects→English), and SLU (intent + slot filling). Baselines: Whisper-Large-v3, ECAPA-TDNN, OmniVoice. Training resources cited include TEDxTN, TuniFra, and SLURP-TN.
@@ -131,4 +137,16 @@ Speech corpora (ASR, spoken language understanding, speech translation), text-to
 - Baseline SpeechBrain recipes for the SLURP-TN dataset. Elyadata. **[open]** (GitHub).
 
 ### [IWSLT 2022 / 2023 dialectal speech translation](https://iwslt.org/2022/dialect)
-- Tunisian↔English speech translation task. Data prep/scoring: [kevinduh/iwslt22-dialect](https://github.com/kevinduh/iwslt22-dialect).
+- Tunisian↔English speech translation task. Data prep/scoring: [kevinduh/iwslt22-dialect](https://github.com/kevinduh/iwslt22-dialect). **[open]** (scripts); the underlying audio is the LDC Tunisian conversational corpus listed above, which is **[paywalled]**.
+
+---
+
+## Confirmed negatives
+
+Checked and found to contain **no Tunisian data**, recorded so that effort is not wasted re-checking. A negative result is a result: knowing where Tunisian *isn't* saves as much time as knowing where it is.
+
+- **Mozilla Common Voice** — no dedicated Tunisian-dialect subset; only generic Arabic.
+- **MGB-3** (Egyptian) and **MGB-5** (Moroccan) — no Tunisian data.
+- **Casablanca** multidialectal ASR (EMNLP 2024) — covers 8 Arabic dialects; **Tunisian is not one of them**.
+- **DialectalArabicMMLU** ([arXiv:2510.27543](https://arxiv.org/abs/2510.27543), LREC 2026) — manually translated MMLU-Redux into five dialects (Syrian, Egyptian, Emirati, Saudi, Moroccan). **Tunisian is not among them.** Text rather than speech, listed here because it is the most common false assumption about Arabic dialect benchmark coverage.
+- **Global MMLU** ([arXiv:2412.03304](https://arxiv.org/abs/2412.03304), ACL 2025) — 42 languages with human-verified translations, Arabic included as MSA only. Its own limitations section states that dialects are out of scope: *"Future work is needed … to take into account how technology serves different dialects (a topic we do not address here)."*

@@ -1,6 +1,6 @@
 # Tunisian Arabic NLP Resources
 
-![Entries](https://img.shields.io/badge/entries-136-blue) ![Open resources](https://img.shields.io/badge/open-92-brightgreen) ![License](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey) ![PRs welcome](https://img.shields.io/badge/PRs-welcome-orange) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21779464.svg)](https://doi.org/10.5281/zenodo.21779464)
+![Entries](https://img.shields.io/badge/entries-138-blue) ![Open resources](https://img.shields.io/badge/open-94-brightgreen) ![License](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey) ![PRs welcome](https://img.shields.io/badge/PRs-welcome-orange) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21779464.svg)](https://doi.org/10.5281/zenodo.21779464)
 
 A curated list of datasets, models, tools, and papers for the natural language processing of **Tunisian Arabic** (Tunisian Derja / Tounsi / تونسي, ISO 639-3 code **`aeb`**).
 
@@ -21,11 +21,13 @@ Multi-dialect and pan-Arabic resources are welcome; the map records the Tunisian
 | | Entries | Where |
 |---|---|---|
 | Text datasets, benchmarks, lexicons & papers | 67 | this file |
-| Speech corpora (ASR, SLU, translation, TTS) | 24 | [SPEECH.md](SPEECH.md) |
-| Pretrained models (LLMs, encoders, ASR, TTS) | 14 | [MODELS.md](MODELS.md) |
+| Speech corpora (ASR, SLU, translation, TTS) | 25 | [SPEECH.md](SPEECH.md) |
+| Pretrained models (LLMs, encoders, ASR, TTS) | 16 | [MODELS.md](MODELS.md) |
 | Researchers, labs & companies | 30 | [PEOPLE.md](PEOPLE.md) |
 
-Of the 124 access-tagged resources: **92 open** · 11 paywalled · 10 paper-only · 9 on request · 2 gated. Every entry links to a verifiable source; uncertain Tunisian coverage is flagged rather than dropped.
+*Counted as one `###` heading each, so the figures above sum to the entries badge and anyone can reproduce them with `grep -c '^### '`. Two caveats in opposite directions: a few headings group several related items (for example "Classic ASR systems (papers)"), which undercounts individual resources; and a handful of resources are cross-listed under a second category with a pointer to the full entry (PADIC, TArC), which counts them twice. The figure is a heading count, not a claim about distinct artifacts.*
+
+126 access tags are applied across the three resource files: **96 open** · 11 paywalled · 9 paper-only · 8 on request · 1 gated · 1 commercial. Some entries carry more than one tag (scripts open, underlying audio paywalled), so this counts tags rather than resources. Every entry links to a verifiable source; uncertain Tunisian coverage is flagged rather than dropped, and things checked and found to contain no Tunisian data are recorded under [Confirmed negatives](SPEECH.md#confirmed-negatives) instead of silently omitted.
 
 ## Recently added
 
@@ -33,6 +35,8 @@ Of the 124 access-tagged resources: **92 open** · 11 paywalled · 10 paper-only
 
 | Date | Entry | Added by |
 |---|---|---|
+| 2026-08 | [Whisperv3-tunisian-codeswitch](MODELS.md#asr-models) — NADI 2026 subtask 1.3, TN↔FR/EN code-switched ASR; **blind test WER 15.22 (3rd)**, against 0.478 for Tunisian on the 13-dialect model | [Ahmed Wasfy](https://huggingface.co/oddadmix) |
+| 2026-08 | [FARUKxAUTO/tunisian-asr-cleaned](SPEECH.md#speech-corpora-asr--slu--speech-translation) — 54k-row Tunisian ASR set behind the model above; **flagged: no card, no licence, provenance unestablished** | [Ahmed Wasfy](https://huggingface.co/oddadmix) |
 | 2026-08 | [tunisian-darija-english](#tunisian-darija-english-dhia-azizi) — 553 provenance-tagged Arabizi↔English pairs, 53 cultural categories + from-scratch MT pipeline | [Dhia Azizi](https://github.com/Dhiadev-tn) |
 | 2026-07 | [dialect-router-v0.2](MODELS.md#dialect-identification) — 15-label Arabic dialect ID, 11.6M params; **macro-F1 0.905, no per-dialect breakdown published** | [Ahmed Wasfy](https://huggingface.co/oddadmix) |
 | 2026-07 | [whisper-large-v3-arabic-dialectal-v2](MODELS.md#asr-models) — 13-dialect ASR with **per-dialect WER; Tunisian is hardest of the 13 (0.478)** | [Ahmed Wasfy](https://huggingface.co/oddadmix) |
@@ -75,6 +79,7 @@ Each entry ends with an access note:
 - **[on request]** — obtain by contacting the authors
 - **[paywalled]** — behind a publisher or LDC paywall
 - **[paper only]** — described in a paper; no dataset download located
+- **[commercial]** — a paid product, not a research resource; listed for completeness
 
 A note on scope: some resources are pan-Arabic or Maghrebi and contain Tunisian only as one part. These are included with the Tunisian portion noted, because they are often the only source of a given resource type. Items where Tunisian coverage could not be confirmed are flagged.
 
@@ -187,7 +192,7 @@ Related: learning word representations for Tunisian sentiment ([arXiv:2010.06857
 - **[open]** (GitHub).
 
 ### [PADIC — Parallel Arabic Dialect Corpus](https://smart.loria.fr/corpora/)
-- Also usable for dialect ID; one of six dialects is Tunisian. Full details under [Machine translation and parallel corpora](#machine-translation-and-parallel-corpora).
+- Cross-listed. Also usable for dialect ID; one of six dialects is Tunisian. Full details under [Machine translation and parallel corpora](#machine-translation-and-parallel-corpora). **[open]**.
 
 ### Sub-dialect identification (within Tunisian)
 - [Text and Speech-based Tunisian Arabic Sub-Dialects Identification (LREC 2020)](https://aclanthology.org/2020.lrec-1.787/) — Kchaou, Ben Abdallah, Bougares. Distinguishes Tunis / Sfax / Sousse / Tataouine. A released benchmark rather than an organized competition. **[open]** (paper).
@@ -222,7 +227,7 @@ Related: learning word representations for Tunisian sentiment ([arXiv:2010.06857
 ## POS tagging
 
 ### TArC POS layer
-- See [TArC](#treebanks-and-syntactic-resources): ~43k Arabizi tokens with Penn Arabic Treebank-style POS. **[open]**.
+- See [TArC](#treebanks-and-syntactic-resources) ([repo](https://github.com/eligugliotta/tarc)): ~43k Arabizi tokens with Penn Arabic Treebank-style POS. **[open]**.
 
 ### [POS-tagging of Tunisian Dialect Using Standard Arabic Resources (WANLP 2015)](https://aclanthology.org/W15-3207/)
 - Hamdi, Nasr, Habash, Gala. Maps Tunisian to an MSA lattice and tags with an MSA tagger (~89% accuracy). Method paper; no standalone gold TD POS corpus released. **[open]** (paper).
