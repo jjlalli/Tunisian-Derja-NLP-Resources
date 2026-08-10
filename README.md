@@ -1,6 +1,6 @@
 # Tunisian Arabic NLP Resources
 
-![Entries](https://img.shields.io/badge/entries-138-blue) ![Open resources](https://img.shields.io/badge/open-94-brightgreen) ![License](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey) ![PRs welcome](https://img.shields.io/badge/PRs-welcome-orange) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21779464.svg)](https://doi.org/10.5281/zenodo.21779464)
+![Entries](https://img.shields.io/badge/entries-146-blue) ![Open resources](https://img.shields.io/badge/open-89-brightgreen) ![License](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey) ![PRs welcome](https://img.shields.io/badge/PRs-welcome-orange) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21779464.svg)](https://doi.org/10.5281/zenodo.21779464)
 
 A curated list of datasets, models, tools, and papers for the natural language processing of **Tunisian Arabic** (Tunisian Derja / Tounsi / تونسي, ISO 639-3 code **`aeb`**).
 
@@ -20,14 +20,14 @@ Multi-dialect and pan-Arabic resources are welcome; the map records the Tunisian
 
 | | Entries | Where |
 |---|---|---|
-| Text datasets, benchmarks, lexicons & papers | 67 | this file |
-| Speech corpora (ASR, SLU, translation, TTS) | 25 | [SPEECH.md](SPEECH.md) |
-| Pretrained models (LLMs, encoders, ASR, TTS) | 16 | [MODELS.md](MODELS.md) |
+| Text datasets, benchmarks, lexicons & papers | 70 | this file |
+| Speech corpora (ASR, SLU, translation, TTS) | 28 | [SPEECH.md](SPEECH.md) |
+| Pretrained models (LLMs, encoders, ASR, TTS) | 18 | [MODELS.md](MODELS.md) |
 | Researchers, labs & companies | 30 | [PEOPLE.md](PEOPLE.md) |
 
 *Counted as one `###` heading each, so the figures above sum to the entries badge and anyone can reproduce them with `grep -c '^### '`. Two caveats in opposite directions: a few headings group several related items (for example "Classic ASR systems (papers)"), which undercounts individual resources; and a handful of resources are cross-listed under a second category with a pointer to the full entry (PADIC, TArC), which counts them twice. The figure is a heading count, not a claim about distinct artifacts.*
 
-126 access tags are applied across the three resource files: **96 open** · 11 paywalled · 9 paper-only · 8 on request · 1 gated · 1 commercial. Some entries carry more than one tag (scripts open, underlying audio paywalled), so this counts tags rather than resources. Every entry links to a verifiable source; uncertain Tunisian coverage is flagged rather than dropped, and things checked and found to contain no Tunisian data are recorded under [Confirmed negatives](SPEECH.md#confirmed-negatives) instead of silently omitted.
+144 access tags are applied across the three resource files: **109 open** · 12 paywalled · 10 paper-only · 9 on request · 2 gated · 2 commercial. Some entries carry more than one tag (scripts open, underlying audio paywalled), so this counts tags rather than resources — reproduce with `grep -oE '\*\*\[(open|gated|on request|paywalled|paper only|commercial)\]\*\*' README.md SPEECH.md MODELS.md | wc -l`. At *entry* level, which is what the open badge tracks, `build-dataset-csv.py` resolves the same data to **89 open** of 116 parsed entries, with 7 grouped entries carrying several tags at once and 1 untagged. Every entry links to a verifiable source; uncertain Tunisian coverage is flagged rather than dropped, and things checked and found to contain no Tunisian data are recorded under [Confirmed negatives](SPEECH.md#confirmed-negatives) instead of silently omitted.
 
 ## Recently added
 
@@ -35,6 +35,12 @@ Multi-dialect and pan-Arabic resources are welcome; the map records the Tunisian
 
 | Date | Entry | Added by |
 |---|---|---|
+| 2026-08 | [arabic-audio-collection-tunisian-deep-confessions](SPEECH.md#speech-corpora-asr--slu--speech-translation) — 37,156 transcribed chunks / ~20 GB of **spontaneous confessional speech** with paralinguistic markers; a register no other corpus here covers | [Amine Troudi](https://github.com/aminetroudi) |
+| 2026-08 | [silma-tts-derja series](MODELS.md#tts-models) — F5-TTS Derja TTS trained on LinTO-TN with a **fully documented recipe** (SNR filtering, single-speaker, 40 epochs); no eval published | [Amine Troudi](https://github.com/aminetroudi) |
+| 2026-08 | [whisper-small-tunisian-asr](MODELS.md#asr-models) — **WER 37.99 / CER 18.77 on the TEDxTN test split**, and it ships an 842-utterance pre-fine-tuning baseline quantifying out-of-the-box collapse (median WER 91.7%, worst 2,642.9%) | [Amine Troudi](https://github.com/aminetroudi) |
+| 2026-08 | [Tunisian Proverbs with Image Associations](#cultural-and-multimodal-resources) — 999 proverbs, dual word-for-word/dynamic English, four generated images each; **the only text–image Tunisian resource found**, and a new section | [Amine Troudi](https://github.com/aminetroudi) |
+| 2026-08 | [senior_tunisian_voice](SPEECH.md#speech-corpora-asr--slu--speech-translation) — 5,377 rows / ~2.4 GB code-switched TN–FR with **both normalised and raw transcript layers**; provenance undocumented | [Amine Troudi](https://github.com/aminetroudi) |
+| 2026-08 | Flagged **[Syrinesmati/tunisian-dialect-corpus](#text-corpora-raw--web--social)** as a repackaged slice of the LINAGORA corpus (its own `source` column proves it) with a wrong arXiv citation, and **AzizBelaweid/Tunisian_Language_Dataset** as containing plain English rows | [Amine Troudi](https://github.com/aminetroudi) |
 | 2026-08 | [Whisperv3-tunisian-codeswitch](MODELS.md#asr-models) — NADI 2026 subtask 1.3, TN↔FR/EN code-switched ASR; **blind test WER 15.22 (3rd)**, against 0.478 for Tunisian on the 13-dialect model | [Ahmed Wasfy](https://huggingface.co/oddadmix) |
 | 2026-08 | [FARUKxAUTO/tunisian-asr-cleaned](SPEECH.md#speech-corpora-asr--slu--speech-translation) — 54k-row Tunisian ASR set behind the model above; **flagged: no card, no licence, provenance unestablished** | [Ahmed Wasfy](https://huggingface.co/oddadmix) |
 | 2026-08 | [tunisian-darija-english](#tunisian-darija-english-dhia-azizi) — 553 provenance-tagged Arabizi↔English pairs, 53 cultural categories + from-scratch MT pipeline | [Dhia Azizi](https://github.com/Dhiadev-tn) |
@@ -58,6 +64,7 @@ Multi-dialect and pan-Arabic resources are welcome; the map records the Tunisian
 - [Transliteration and Arabizi](#transliteration-and-arabizi)
 - [Orthography (CODA)](#orthography-coda)
 - [Lexicons, dictionaries, wordnets](#lexicons-dictionaries-wordnets)
+- [Cultural and multimodal resources](#cultural-and-multimodal-resources)
 - [LLM evaluation benchmarks](#llm-evaluation-benchmarks)
 - [LLM training and evaluation datasets](#llm-training-and-evaluation-datasets)
 - [Surveys](#surveys)
@@ -111,6 +118,18 @@ A note on scope: some resources are pan-Arabic or Maghrebi and contain Tunisian 
 ### [Tunisian_reddit](https://huggingface.co/datasets/Lime1/Tunisian_reddit)
 - Raw social-media corpus scraped from Reddit. Small/uncurated; size not documented.
 - **[open]** (HuggingFace).
+
+### [AzizBelaweid/Tunisian_Language_Dataset](https://huggingface.co/datasets/AzizBelaweid/Tunisian_Language_Dataset)
+- **269,773** rows, single `text` column, ~618 MB. CC-BY-4.0, Aziz Belaweid, 2024. Publishes its own `create_data.py` and `preprocess.py`, so the build is reproducible — unusual and welcome for a community dump.
+- ⚠️ **Not a Tunisian-only corpus, despite the name.** Sampling returns plain English prose (*"On the other hand, I have received an offer from a startup that is willing to pay me 2500 TND"*) interleaved with Derja and MSA news text. The card's `ar`/`fr`/`en` language tags are the accurate description; the title is not. Run language ID and filter before using it as a Derja LM corpus, and do not quote the 270k figure as Tunisian text.
+- **[open]** (CC-BY-4.0).
+
+### [Syrinesmati/tunisian-dialect-corpus](https://huggingface.co/datasets/Syrinesmati/tunisian-dialect-corpus)
+- **1,180,174** rows, `text` + `source`, ~208 MB parquet. Apache-2.0, 2026.
+- ⚠️ **Derivative, not a new corpus — and it says so itself.** The `source` column attributes rows to `linagora/Tunisian_Derja_Dataset::Tunisian_Dialectic_English_Derja`, i.e. this is a cleaned slice of the [LINAGORA corpus](#linagoratunisian_derja_dataset) above, specifically its khaled123-derived sub-corpus. Treating it as an independent 1.18M-row resource would double-count data already listed twice in this map.
+- ⚠️ Its `arxiv:2309.11327` tag points at the **TunSwitch / SalahZa ASR paper**, which has nothing to do with this text corpus. The citation is wrong, not merely loose.
+- Row quality is uneven in the same way the parent is — sampling turns up degenerate repetition (*"أية وحدة ألاي أية وحدة ألاي أية وحدة ألاي"*). The genuine merit is the explicit `source` column: it is one of the few community repackagings in this ecosystem that makes its own provenance checkable.
+- **[open]** (Apache-2.0).
 
 ---
 
@@ -306,7 +325,8 @@ The most useful openly available NER building blocks are the **Barcha** gazettee
 - **[open]** (CC BY-NC-SA 4.0 — note the non-commercial clause).
 
 ### Community HuggingFace parallel sets
-- [tunis-ai/tunisian-msa-parallel-corpus](https://huggingface.co/datasets/tunis-ai/tunisian-msa-parallel-corpus) and [tunis-ai/MADAR-TUN](https://huggingface.co/datasets/tunis-ai/MADAR-TUN) (~30k) — Derja↔MSA. Tunisia.AI, 2025. **[open]**.
+- [tunis-ai/tunisian-msa-parallel-corpus](https://huggingface.co/datasets/tunis-ai/tunisian-msa-parallel-corpus) and [tunis-ai/MADAR-TUN](https://huggingface.co/datasets/tunis-ai/MADAR-TUN) (~30k) — Derja↔MSA. Tunisia.AI, 2025. **[open]**. Companion [tunis-ai/tunisian-msa-parallel-corpus-evaluated](https://huggingface.co/datasets/tunis-ai/tunisian-msa-parallel-corpus-evaluated) — a **1,000-row** quality-graded subset (CC-BY-4.0, tagged `aeb`) carrying `semantic_similarity`, `fluency_score` and `composite_score` per pair alongside raw and cleaned MSA translations. It is the scored/filtered view of the corpus above, not additional data; the per-pair scores make it the more useful of the two for building an evaluation split.
+- [KKKarim711/tunisian-english-parallel-pairs](https://huggingface.co/datasets/KKKarim711/tunisian-english-parallel-pairs) — **237,138** `tn`/`en` pairs, JSONL, Apache-2.0, 2026. The card states outright that the pairs are **synthetic**, generated for a data-augmentation and transfer-learning MT project. Comparable in kind and scale to khaled123's ~436k synthetic set below; the Tunisian side reads like spontaneous-speech transcription (*"هذاكة مشى الجهة متاع صالة شاسمها صالة اليوم"*) with visibly machine-produced English. Usable as MT augmentation data, not as a gold reference. **[open]**.
 - [NadiaGHEZAIEL/English_to_Tunisian_Dataset](https://huggingface.co/datasets/NadiaGHEZAIEL/English_to_Tunisian_Dataset) (~1.7k) — English→Tunisian. Nov 2025. **[open]**.
 - [khaled123/Tunisianderjasynthtranslation](https://huggingface.co/datasets/khaled123/Tunisianderjasynthtranslation) (~436k, synthetic) and the Kaggle [drejja-to-english](https://www.kaggle.com/datasets/khawlajlassi/drejja-to-english) (~13k) — Derja↔English. **[open]**.
 - [Barcha](https://github.com/wa3dbk/Barcha) — its `translation/` folder holds Tunisian↔English/MSA parallel data (also has NER gazetteers and raw texts; see [NER](#named-entity-recognition)). **[open]**.
@@ -376,6 +396,16 @@ The most useful openly available NER building blocks are the **Barcha** gazettee
 
 ---
 
+## Cultural and multimodal resources
+
+### [Tunisian Proverbs with Image Associations](https://huggingface.co/datasets/HabibaAbderrahim/Tunisian-Proverbs-with-Image-Associations-A-Cultural-and-Linguistic-Dataset)
+- **999** Tunisian proverbs, each with an Arabic explanation, a `context` field, two English rendering layers (`caption` word-for-word and `dynamic` for the functional equivalent), a `caption_formal` variant, the generation `prompt`, **up to four AI-generated images**, and a `clip_scores` value. Habiba Abderrahim, 2025. DOI [10.57967/hf/5189](https://doi.org/10.57967/hf/5189).
+- **The only text–image Tunisian resource found in this survey**, and the reason this section exists. Proverbs (*ظل راجل ولا ظل حيط*, *كل قرده في عين امه غزال*) are exactly the material that pan-Arabic corpora flatten away, and the paired word-for-word / dynamic translations make it usable for idiom and figurative-translation evaluation independent of the images.
+- Note that the images are **model-generated interpretations, not photographs or archival material** — they are useful for multimodal and generative work, not as documentary cultural record. `clip_scores` gives a text–image alignment signal but no human validation of cultural accuracy is reported.
+- **[open]** (CC-BY-4.0).
+
+---
+
 ## LLM evaluation benchmarks
 
 ### [TounsiBench](https://github.com/Souha-BH/TounsiBench-Benchmarking-Large-Language-Models-for-Tunisian-Arabic)
@@ -412,6 +442,7 @@ The instruction / SFT / DPO / synthetic data layer behind the Tunisian LLMs in [
 ### Other
 - [Datasmartly/darja-tunisie-chat](https://huggingface.co/datasets/Datasmartly/darja-tunisie-chat) — Tunisian chat dataset, 2025. **[gated]** (must accept conditions; no card).
 - [abdouuu/tunisian_chatbot_data](https://huggingface.co/datasets/abdouuu/tunisian_chatbot_data) — ~1,426 instruction pairs, 2024. Weak as a Derja-generation set (questions in Derja, answers largely MSA/English). **[open]**.
+- [Syrinesmati/tunisian-question-response-dataset](https://huggingface.co/datasets/Syrinesmati/tunisian-question-response-dataset) — **31,669** instruction/response pairs (25,335 train / 6,334 test) with a `category` field (`student_life`, `cultural_knowledge`, …). CC-BY-4.0, 2026. Answers are in Derja with French/English technical terms transliterated and bracketed (*"استعمل (منديلي) ولا (زوتيرو)"*), and the set covers practical Tunisian topics — certification exams, bibliographic tooling, proverb usage — that the other SFT sets here do not. ⚠️ Style is highly uniform and the definite article is consistently written detached (`الـ سيرتيفيكاسيون`, `الـ لغات`), which points to templated or LLM-generated construction rather than collected text; the card does not state a generation method. Treat as synthetic. Pre-split train/test, which most sets here are not. **[open]**.
 
 ---
 
@@ -458,7 +489,7 @@ If this inventory is useful in your research, please cite it:
   author       = {Jlali, Fatma},
   title        = {Tunisian Arabic {NLP} Resources: A Curated Inventory},
   year         = {2026},
-  howpublished = {\url{https://github.com/jjlalli/Tunisian-NLP-Resources}},
+  howpublished = {\url{https://github.com/jjlalli/Tunisian-Derja-NLP-Resources}},
   note         = {Living inventory of datasets, models, and papers for Tunisian Arabic (aeb)}
 }
 ```
