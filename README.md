@@ -1,6 +1,6 @@
 # Tunisian Arabic NLP Resources
 
-![Entries](https://img.shields.io/badge/entries-138-blue) ![Open resources](https://img.shields.io/badge/open-94-brightgreen) ![License](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey) ![PRs welcome](https://img.shields.io/badge/PRs-welcome-orange) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21779464.svg)](https://doi.org/10.5281/zenodo.21779464)
+![Entries](https://img.shields.io/badge/entries-146-blue) ![Open resources](https://img.shields.io/badge/open-103-brightgreen) ![License](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey) ![PRs welcome](https://img.shields.io/badge/PRs-welcome-orange) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21779464.svg)](https://doi.org/10.5281/zenodo.21779464)
 
 A curated list of datasets, models, tools, and papers for the natural language processing of **Tunisian Arabic** (Tunisian Derja / Tounsi / تونسي, ISO 639-3 code **`aeb`**).
 
@@ -20,14 +20,14 @@ Multi-dialect and pan-Arabic resources are welcome; the map records the Tunisian
 
 | | Entries | Where |
 |---|---|---|
-| Text datasets, benchmarks, lexicons & papers | 67 | this file |
+| Text datasets, benchmarks, lexicons & papers | 70 | this file |
 | Speech corpora (ASR, SLU, translation, TTS) | 25 | [SPEECH.md](SPEECH.md) |
-| Pretrained models (LLMs, encoders, ASR, TTS) | 16 | [MODELS.md](MODELS.md) |
+| Pretrained models (LLMs, encoders, ASR, TTS, OCR) | 21 | [MODELS.md](MODELS.md) |
 | Researchers, labs & companies | 30 | [PEOPLE.md](PEOPLE.md) |
 
 *Counted as one `###` heading each, so the figures above sum to the entries badge and anyone can reproduce them with `grep -c '^### '`. Two caveats in opposite directions: a few headings group several related items (for example "Classic ASR systems (papers)"), which undercounts individual resources; and a handful of resources are cross-listed under a second category with a pointer to the full entry (PADIC, TArC), which counts them twice. The figure is a heading count, not a claim about distinct artifacts.*
 
-126 access tags are applied across the three resource files: **96 open** · 11 paywalled · 9 paper-only · 8 on request · 1 gated · 1 commercial. Some entries carry more than one tag (scripts open, underlying audio paywalled), so this counts tags rather than resources. Every entry links to a verifiable source; uncertain Tunisian coverage is flagged rather than dropped, and things checked and found to contain no Tunisian data are recorded under [Confirmed negatives](SPEECH.md#confirmed-negatives) instead of silently omitted.
+140 access tags are applied across the three resource files (recomputed 29 Aug 2026; reproduce with `grep -o '\*\*\[[a-z -]*\]\*\*' README.md SPEECH.md MODELS.md | sort | uniq -c`): **103 open** · 12 paywalled · 12 paper-only · 9 on request · 2 gated · 2 commercial. Some entries carry more than one tag (scripts open, underlying audio paywalled), so this counts tags rather than resources. Every entry links to a verifiable source; uncertain Tunisian coverage is flagged rather than dropped, and things checked and found to contain no Tunisian data are recorded under [Confirmed negatives](SPEECH.md#confirmed-negatives) instead of silently omitted.
 
 ## Recently added
 
@@ -35,7 +35,8 @@ Multi-dialect and pan-Arabic resources are welcome; the map records the Tunisian
 
 | Date | Entry | Added by |
 |---|---|---|
-| 2026-08 | [Whisperv3-tunisian-codeswitch](MODELS.md#asr-models) — NADI 2026 subtask 1.3, TN↔FR/EN code-switched ASR; **blind test WER 15.22 (3rd)**, against 0.478 for Tunisian on the 13-dialect model | [Ahmed Wasfy](https://huggingface.co/oddadmix) |
+| 2026-08 | **Correction + additions batch (29 Aug):** NADI 2026 final board recorded (below) · [TDMulti](#tdmulti--tunisian-dialectmsa-multitask-corpus) (LREC 2026) · [Romanized Arabic Across Dialects](#romanized-arabic-across-dialects-five-dialect-arabizi-study) (arXiv) · [tunisian-english-parallel-pairs](#tunisian-english-parallel-pairs) · five community model releases in [MODELS.md](MODELS.md) (silma-tts-derja, tunisian-xtts, qwen3-telephony ASR, grouped Whisper fine-tunes, first OCR entry) · SLURP-TN upgraded to its LREC 2026 record · author/order fixes on T-HSAB, sub-dialect ID, LinTO, Mahdi; TunSwitch marked preprint-only | maintainer |
+| 2026-08 | [Whisperv3-tunisian-codeswitch](MODELS.md#asr-models) — NADI 2026 subtask 1.3, TN↔FR/EN code-switched ASR; **final test leaderboard: 6th of 9 at WER 15.21 (winner 14.41)** — the earlier "3rd, 15.22" reflected a pre-final board — against 0.478 for Tunisian on the 13-dialect model | [Ahmed Wasfy](https://huggingface.co/oddadmix) |
 | 2026-08 | [FARUKxAUTO/tunisian-asr-cleaned](SPEECH.md#speech-corpora-asr--slu--speech-translation) — 54k-row Tunisian ASR set behind the model above; **flagged: no card, no licence, provenance unestablished** | [Ahmed Wasfy](https://huggingface.co/oddadmix) |
 | 2026-08 | [tunisian-darija-english](#tunisian-darija-english-dhia-azizi) — 553 provenance-tagged Arabizi↔English pairs, 53 cultural categories + from-scratch MT pipeline | [Dhia Azizi](https://github.com/Dhiadev-tn) |
 | 2026-07 | [dialect-router-v0.2](MODELS.md#dialect-identification) — 15-label Arabic dialect ID, 11.6M params; **macro-F1 0.905, no per-dialect breakdown published** | [Ahmed Wasfy](https://huggingface.co/oddadmix) |
@@ -147,7 +148,7 @@ Related: learning word representations for Tunisian sentiment ([arXiv:2010.06857
 ## Offensive language, hate speech, sarcasm
 
 ### [T-HSAB — Tunisian Hate Speech and Abusive Dataset](https://github.com/Hala-Mulki/T-HSAB-A-Tunisian-Hate-Speech-and-Abusive-Dataset)
-- Three classes: normal / abusive / hate. Mulki, Haddad et al., 2019. ~6,075 comments.
+- Three classes: normal / abusive / hate. Haddad, Mulki, Oueslati, 2019 (Springer ICALP proceedings, pp. 251–263). ~6,075 comments.
 - Paper: [Springer chapter](https://link.springer.com/chapter/10.1007/978-3-030-32959-4_18). **[open]** (GitHub).
 
 ### [TEET! — Tunisian Dataset for Toxic Speech Detection](https://aclanthology.org/2021.winlp-1.2/)
@@ -157,6 +158,11 @@ Related: learning word representations for Tunisian sentiment ([arXiv:2010.06857
 ### HateTune — Tunisian Dialect Hate Speech Detection Dataset
 - Hate speech in Arabic-script Tunisian, 2024. Behind a Springer paywall; dataset access unconfirmed.
 - **[paywalled]** ([Springer chapter](https://link.springer.com/chapter/10.1007/978-3-031-79164-2_6)).
+
+### [TDMulti — Tunisian Dialect–MSA Multitask Corpus](https://aclanthology.org/2026.lrec-1.254/)
+- First multitask Tunisian corpus manually aligned with MSA: 3,100 social-media comments, 12,400 labels across **hate speech, sentiment polarity, sarcasm, and topic**, with a context-aware cross-attention BERT model. Torjmen, Haddar, LREC 2026 (pp. 3240–3249).
+- Cross-listed here under its hate-speech layer; the sentiment/sarcasm/topic layers make it equally relevant to [Sentiment analysis](#sentiment-analysis).
+- A public data repository has not been confirmed (checked 29 Aug 2026); the paper itself is open access. **[paper only]**.
 
 ---
 
@@ -195,7 +201,7 @@ Related: learning word representations for Tunisian sentiment ([arXiv:2010.06857
 - Cross-listed. Also usable for dialect ID; one of six dialects is Tunisian. Full details under [Machine translation and parallel corpora](#machine-translation-and-parallel-corpora). **[open]**.
 
 ### Sub-dialect identification (within Tunisian)
-- [Text and Speech-based Tunisian Arabic Sub-Dialects Identification (LREC 2020)](https://aclanthology.org/2020.lrec-1.787/) — Kchaou, Ben Abdallah, Bougares. Distinguishes Tunis / Sfax / Sousse / Tataouine. A released benchmark rather than an organized competition. **[open]** (paper).
+- [Text and Speech-based Tunisian Arabic Sub-Dialects Identification (LREC 2020)](https://aclanthology.org/2020.lrec-1.787/) — Ben Abdallah, Kchaou, Bougares. Distinguishes Tunis / Sfax / Sousse / Tataouine. A released benchmark rather than an organized competition. **[open]** (paper).
 
 ---
 
@@ -277,6 +283,10 @@ The most useful openly available NER building blocks are the **Barcha** gazettee
 
 ## Machine translation and parallel corpora
 
+### [tunisian-english-parallel-pairs](https://huggingface.co/datasets/KKKarim711/tunisian-english-parallel-pairs)
+- Synthetic Tunisian↔English parallel pairs (HF size bucket 100K–1M rows), Apache-2.0, uploaded Jul 2026 (KKKarim711).
+- ⚠️ Synthetic, with no documented generation pipeline or human validation on the card — usable for augmentation experiments, not as a gold reference. Flagged per registry practice. **[open]**.
+
 ### [PADIC — Parallel Arabic Dialect Corpus](https://smart.loria.fr/corpora/)
 - Parallel dialect corpus. Meftouh, Harrat, Abbas, Smaïli (SMarT/LORIA); Tunisian portion by Salma Jamoussi. 2015, extended 2017–2018.
 - ~6,400 sentences per variety aligned to MSA. Varieties: Algiers, Annaba, **Tunisian**, Moroccan (Casablanca, Rabat), Syrian, Palestinian + MSA.
@@ -317,6 +327,10 @@ The most useful openly available NER building blocks are the **Barcha** gazettee
 ---
 
 ## Transliteration and Arabizi
+
+### [Romanized Arabic Across Dialects (five-dialect Arabizi study)](https://arxiv.org/abs/2608.02555)
+- The largest human-centered cross-dialect study of Arabizi perception and usage to date, covering Algerian, Egyptian, Lebanese, Moroccan, and **Tunisian** Arabic. Announces two resources: character-level Arabic↔Arabizi alignments from survey-participant transliterations, and a manually curated parallel corpus of Arabic-script sentences with multiple Arabizi transliterations per dialect. Keleg, Ben Abdallah, Yassine, Helwe, Guellil, Ousidhoum, 2026.
+- arXiv:2608.02555 (3 Aug 2026, under review). Release links for the two resources were not yet live when checked (29 Aug 2026). **[paper only]** (release announced).
 
 ### [TArC](https://github.com/eligugliotta/tarc) + [Multi-Task Sequence Prediction tool](https://aclanthology.org/2020.wanlp-1.16/)
 - Annotated Arabizi corpus and the neural tool that transliterates Arabizi→CODA Arabic script and does tokenization/POS. Gugliotta, Dinarelli, Kraif. Code on [GitLab](https://gricad-gitlab.univ-grenoble-alpes.fr/dinarelm/tarc-multi-task-system). **[open]**.
@@ -384,7 +398,7 @@ The most useful openly available NER building blocks are the **Barcha** gazettee
 - Repo: [Souha-BH/TounsiBench-…](https://github.com/Souha-BH/TounsiBench-Benchmarking-Large-Language-Models-for-Tunisian-Arabic) (`data/` = instructions, native gold responses, topic labels, evaluated model outputs; plus a GPT-4o evaluation notebook to score your own model). Paper: [EMNLP 2025](https://aclanthology.org/2025.emnlp-main.1756/). **[open]**.
 
 ### [How Well Do LLMs Understand Tunisian Arabic?](https://arxiv.org/abs/2511.16683)
-- Parallel Tunizi ↔ standard Tunisian ↔ English corpus with sentiment labels; benchmarks LLMs on transliteration, translation, sentiment. Mahdi et al., 2025. **[open]** (arXiv).
+- Parallel Tunizi ↔ standard Tunisian ↔ English corpus with sentiment labels; benchmarks LLMs on transliteration, translation, sentiment. Mohamed Mahdi, 2025 (single author). **[open]** (arXiv).
 
 ### [linagora/TunisianMMLU](https://huggingface.co/datasets/linagora/TunisianMMLU)
 - MMLU-style multiple-choice evaluation benchmark in Tunisian Derja, ~21.7k rows. LINAGORA, 2025. Built to evaluate the Labess LLM in-dialect.
@@ -471,4 +485,4 @@ The list itself is released under [CC BY 4.0](LICENSE). The linked resources kee
 
 ---
 
-*Maintained by Fatma Jlali. Contributions and corrections welcome — see [CONTRIBUTING.md](CONTRIBUTING.md). Last compiled: July 2026.*
+*Maintained by Fatma Jlali. Contributions and corrections welcome — see [CONTRIBUTING.md](CONTRIBUTING.md). Last compiled: August 2026.*

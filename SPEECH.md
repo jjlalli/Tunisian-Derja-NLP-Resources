@@ -27,10 +27,10 @@ Speech corpora (ASR, spoken language understanding, speech translation), text-to
 ### [TunSwitch (TunSwitch-TO + TunSwitch-CS)](https://zenodo.org/records/8370566)
 - Code-switching speech (SpeechBrain format). Ben Abdallah, Kabboudi, Kanoun, Zaiem (Télécom Paris + Tunis Business School), 2023/2024.
 - ~3h Tunisian-only + ~9h code-switched TN/FR/EN labeled, plus ~153h weakly-labeled audio (18 GB total); includes a 4-gram KenLM LM and language-level annotation. A key open code-switching resource.
-- Mirror: HF [tunis-ai/TunSwitch](https://huggingface.co/datasets/tunis-ai/TunSwitch). Paper: [ICASSP 2024 / arXiv:2309.11327](https://arxiv.org/abs/2309.11327). **[open]** (CC-BY-4.0).
+- Mirror: HF [tunis-ai/TunSwitch](https://huggingface.co/datasets/tunis-ai/TunSwitch). Paper: [arXiv:2309.11327](https://arxiv.org/abs/2309.11327) — the arXiv page says "submitted to ICASSP 2024"; no published proceedings version has been confirmed, so it is cited here as a preprint. **[open]** (CC-BY-4.0).
 
 ### [LinTO Audio & Textual Datasets for Tunisian Arabic](https://huggingface.co/datasets/linagora/linto-dataset-audio-ar-tn)
-- ~93 hours of audio (~81.6h labeled), 20,895 files / ~76k segments; aggregated from YouTube, podcasts, MASC, TunSwitch, OneStory, etc. Naouara, Louradour, Lorré (LINAGORA Labs), 2025. The largest openly-packaged Tunisian ASR training collection.
+- ~93 hours of audio (~81.6h labeled), 20,895 files / ~76k segments; aggregated from YouTube, podcasts, MASC, TunSwitch, OneStory, etc. Naouara, Lorré, Louradour (LINAGORA Labs), 2025. The largest openly-packaged Tunisian ASR training collection.
 - Companion [augmented set](https://huggingface.co/datasets/linagora/linto-dataset-audio-ar-tn-augmented) and a large text corpus. Paper: [arXiv:2504.02604](https://arxiv.org/abs/2504.02604). **[open]** (CC-BY-4.0).
 
 ### [TARIC-SLU](https://aclanthology.org/2024.lrec-main.1357/)
@@ -39,7 +39,7 @@ Speech corpora (ASR, spoken language understanding, speech translation), text-to
 
 ### [SLURP-TN](https://huggingface.co/datasets/Elyadata/SLURP-TN)
 - Tunisian version of the SLURP SLU resource: ~5 hours, 4,165 sentences, 55 native speakers, 6 domains. Elleuch, Mdhaffar, Estève, Bougares (LIA Avignon + Elyadata), 2026.
-- Paper: [arXiv:2603.21940](https://arxiv.org/abs/2603.21940). **[open]** (HuggingFace).
+- Paper: [LREC 2026, pp. 1544–1552](https://aclanthology.org/2026.lrec-1.119/) / [arXiv:2603.21940](https://arxiv.org/abs/2603.21940). Basis of the NADI 2026 SLU shared-task tracks. **[open]** (HuggingFace).
 
 ### [TEDxTN](https://huggingface.co/datasets/fbougares/TEDxTN)
 - First publicly available Tunisian→English speech-translation corpus: 108 TEDx talks (~25 hours), code-switched Tunisian, speakers from 11+ regions; audio + Tunisian transcript + English translation + annotation guidelines. Bougares, Mdhaffar, Elleuch, Estève, ArabicNLP 2025.

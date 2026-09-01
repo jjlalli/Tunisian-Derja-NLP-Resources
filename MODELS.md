@@ -10,6 +10,7 @@ Pretrained language models, ASR models, and TTS models for Tunisian Arabic (`aeb
 - [ASR models](#asr-models)
 - [TTS models](#tts-models)
 - [Dialect identification](#dialect-identification)
+- [OCR](#ocr)
 
 ---
 
@@ -35,7 +36,7 @@ For the datasets that train and evaluate these models (Tunisian_Derja_Dataset, T
 ### [TunBERT](https://github.com/instadeepai/tunbert)
 - The canonical Tunisian BERT. iCompass + InstaDeep, 2021. BERT-base (~110M params), pretrained on ~500k Tunisian social-media comments (~67 MB Common-Crawl-based).
 - First pretrained BERT for Tunisian; evaluated on sentiment, Tunisian dialect ID, and reading-comprehension QA (SOTA at the time). Two releases: [PyTorch/NeMo (instadeepai)](https://github.com/instadeepai/tunbert) and [TensorFlow (iCompass-ai)](https://github.com/iCompass-ai/TunBERT).
-- Paper: [arXiv:2111.13138](https://arxiv.org/abs/2111.13138); [SN Computer Science 2022](https://link.springer.com/article/10.1007/s42979-022-01541-y). **[open]**.
+- Paper: [arXiv:2111.13138](https://arxiv.org/abs/2111.13138); refereed version: [SN Computer Science 4(2):194, 2023](https://link.springer.com/article/10.1007/s42979-022-01541-y). **[open]**.
 
 ### [tunis-ai/TunBERT](https://huggingface.co/tunis-ai/TunBERT)
 - HF-hosted, ready-to-use conversion of TunBERT (NeMo → safetensors) wired for `transformers` text classification; fine-tuned/evaluated on TSAC. The most-used TunBERT on the Hub. ~0.1B params, MIT. **[open]**.
@@ -84,8 +85,8 @@ Not Tunisian-specific — Tunisian appears only as part of pan-Arabic dialect da
 
 ### [oddadmix/Whisperv3-tunisian-codeswitch](https://huggingface.co/oddadmix/Whisperv3-tunisian-codeswitch)
 - Whisper-large-v3 **full** fine-tune (1.54B params) for Tunisian ↔ French/English **code-switched** ASR, built for **NADI 2026 subtask 1.3**. Ahmed Wasfy (oddadmix), uploaded 28 Jul 2026.
-- Author-reported: validation **WER 17.26 / CER 6.91**; **blind test WER 15.22**, third place on the subtask. Trained on [`FARUKxAUTO/tunisian-asr-cleaned`](SPEECH.md#speech-corpora-asr--slu--speech-translation) (46k, dense TN↔FR code-switch) plus NADI TEDx train replay; 2 epochs, spec-augment, lr 5e-6. Greedy decode with `language="ar"`.
-- **Why it matters here:** it is the counter-evidence to the dialect-difficulty reading of the 13-dialect model above. Tunisian scored worst of 13 there (WER 0.478) on a model split across every dialect; a Tunisian-focused fine-tune with code-switch data reports 15.22 on its own blind test. The gap looks like allocation of training data and capacity, not intrinsic difficulty of the dialect.
+- **Final NADI 2026 test leaderboard (CodaBench, read 29 Aug 2026): 6th of 9 entries at WER 15.21 (CER 5.86); the winning entry scored 14.41.** The card's own "third place blind test" claim reflects an earlier leaderboard state and is superseded. Author-reported validation: WER 17.26 / CER 6.91. Trained on [`FARUKxAUTO/tunisian-asr-cleaned`](SPEECH.md#speech-corpora-asr--slu--speech-translation) (46k, dense TN↔FR code-switch) plus NADI TEDx train replay; 2 epochs, spec-augment, lr 5e-6. Greedy decode with `language="ar"`.
+- **Why it matters here:** it is the counter-evidence to the dialect-difficulty reading of the 13-dialect model above. Tunisian scored worst of 13 there (WER 0.478) on a model split across every dialect; a Tunisian-focused fine-tune with code-switch data scored 15.21 on the NADI 2026 final test leaderboard (winner: 14.41). The gap looks like allocation of training data and capacity, not intrinsic difficulty of the dialect.
 - ⚠️ **Not comparable to the SalahZa code-switched numbers above** — those are TunSwitch-CS, these are the NADI 2026 blind test. Different test sets, no shared reference point published.
 - ⚠️ **No license declared** on the repo (the base Whisper-large-v3 is Apache-2.0, but this fine-tune states nothing), and the card's usage snippet still points at a differently-named repo (`nadi2026-subtask1.3-...-faruk-v7`), so it appears to be a rename or mirror. Weights are present and ungated. **[open]** (weights; licence unstated).
 
@@ -96,6 +97,13 @@ Not Tunisian-specific — Tunisian appears only as part of pan-Arabic dialect da
 Note: general Arabic XLSR/Whisper models (e.g., jonatasgrosman/wav2vec2-large-xlsr-53-arabic) are used as Tunisian baselines but degrade sharply out-of-the-box (WER often 50–100%+). Not Tunisian-specific.
 
 ---
+
+### [KBayoud/qwen3-asr-tunisian-telephony-augmented](https://huggingface.co/KBayoud/qwen3-asr-tunisian-telephony-augmented)
+- Qwen3-based ASR fine-tune targeting Tunisian **telephony** audio (augmented training), uploaded 4 Aug 2026 (KBayoud). No published evaluation numbers on the card when checked. **[open]** (weights).
+
+### Community Whisper fine-tunes for Tunisian (Jul–Aug 2026, grouped)
+- Small community ASR releases, grouped in one entry: [awaxsama/whisper-small-tunisian-arabic](https://huggingface.co/awaxsama/whisper-small-tunisian-arabic) and [whisper-tiny-tunisian-arabic](https://huggingface.co/awaxsama/whisper-tiny-tunisian-arabic) (Aug 2026, Apache-2.0, trained on [linagora/linto-dataset-audio-ar-tn-augmented](https://huggingface.co/datasets/linagora/linto-dataset-audio-ar-tn-augmented)) · [maxvu0/whisper-large-v2-tunisian-lora](https://huggingface.co/maxvu0/whisper-large-v2-tunisian-lora) (17 Aug 2026, LoRA) · [houssemtn/whisper-tiny-tunisian-onthefly](https://huggingface.co/houssemtn/whisper-tiny-tunisian-onthefly) (10 Aug 2026).
+- Listed for coverage: none publishes evaluation numbers; licences vary and are stated per card. The steady stream of such releases is itself a signal that the LinTO/TunSwitch training sets are being used. **[open]** (weights on all four; licences vary per card).
 
 ## TTS models
 
@@ -110,6 +118,12 @@ Note: general Arabic XLSR/Whisper models (e.g., jonatasgrosman/wav2vec2-large-xl
 
 ---
 
+### [Ghazouaniwala/silma-tts-derja (v1–v4a)](https://huggingface.co/Ghazouaniwala/silma-tts-derja)
+- F5-TTS-based Tunisian Derja text-to-speech; five checkpoints released 20–31 Jul 2026 (silma-tts-derja, -v2, -v2-1, -v3a, -v4a), Apache-2.0 (Ghazouaniwala). Community release; no published evaluation. **[open]**.
+
+### [Mui17/tunisian-xtts-v1](https://huggingface.co/Mui17/tunisian-xtts-v1)
+- XTTS-based Tunisian TTS, uploaded 14 Aug 2026, Apache-2.0 (Mui17). Community release; no published evaluation. **[open]**.
+
 ## Dialect identification
 
 *Trained models only. The **datasets and benchmarks** for Arabic dialect ID (MADAR, NADI, IADD, QADI, the LREC 2018 shared task, and Tunisian sub-dialect ID) are in [README.md § Dialect identification (text)](README.md#dialect-identification-text); **speech-based** dialect ID is in [SPEECH.md](SPEECH.md).*
@@ -120,3 +134,10 @@ Note: general Arabic XLSR/Whisper models (e.g., jonatasgrosman/wav2vec2-large-xl
 - The card's own stated limitations land on Tunisian specifically: *"Code-switched text (e.g. Arabic + French in Maghrebi dialects) may confuse the classifier; heavily mixed input may be routed to `en`"* — and Tunisian is named in the adjacent-dialect confusion group (`ma / dz / tn`). Both matter for Derja, which is routinely French-code-switched.
 - v0.2 expands 10 → 13 dialects (adds Bahraini, Algerian, Yemeni), adds an English label, renames `mo` → `ma`.
 - MIT licence. **[open]**.
+
+---
+
+## OCR
+
+### [Ghazouaniwala/trocr-tunisian-arabic](https://huggingface.co/Ghazouaniwala/trocr-tunisian-arabic)
+- TrOCR fine-tune for Tunisian Arabic text recognition, uploaded 2 Aug 2026 (Ghazouaniwala). The registry's first OCR entry; no published evaluation on the card when checked (29 Aug 2026). **[open]**.
