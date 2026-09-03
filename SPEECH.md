@@ -44,6 +44,7 @@ Speech corpora (ASR, spoken language understanding, speech translation), text-to
 ### [TEDxTN](https://huggingface.co/datasets/fbougares/TEDxTN)
 - First publicly available Tunisian→English speech-translation corpus: 108 TEDx talks (~25 hours), code-switched Tunisian, speakers from 11+ regions; audio + Tunisian transcript + English translation + annotation guidelines. Bougares, Mdhaffar, Elleuch, Estève, ArabicNLP 2025.
 - Data: [fbougares/TEDxTN](https://huggingface.co/datasets/fbougares/TEDxTN) (HuggingFace). Paper: [ACL](https://aclanthology.org/2025.arabicnlp-main.22/) / [arXiv:2511.10780](https://arxiv.org/abs/2511.10780). **[open]**.
+- Derived, not new audio: [Hediske/tedxtn-tunisian-segmented](https://huggingface.co/datasets/Hediske/tedxtn-tunisian-segmented) — 16,895 utterance-level segments (`audio` + `sentence` + `duration`, ~2.77 GB) cut from TEDxTN for direct Whisper fine-tuning, 2025. Convenience re-segmentation of the corpus above; **no licence declared** on the derivative, so the parent terms should be assumed. Counting it separately would double-count TEDxTN.
 
 ### [TuniFra](https://huggingface.co/datasets/fbougares/TUNIFRA)
 - The first open Tunisian↔French code-switch speech-translation corpus: 15 hours of native Tunisian speech, orthographically transcribed and manually translated into French, for ASR and Tunisian→French speech translation. Choux, Avila, Crego, Bougares (Elyadata), Laurent, ArabicNLP 2025.
@@ -53,6 +54,7 @@ Speech corpora (ASR, spoken language understanding, speech translation), text-to
 ### [TuDiCoI — Tunisian Dialogue Corpus of Interactions](https://huggingface.co/datasets/arbml/TuDiCoI)
 - Spoken railway-ticket dialogue corpus (Derja), transcribed. Small (~hundreds of dialogue turns; arbml mirror ~434 rows). One of the earliest Tunisian dialogue resources.
 - **[open]** (HuggingFace arbml mirror).
+- Derived, not new dialogue: [samfatnassi/Tunisian-Railway-Dialogues](https://huggingface.co/datasets/samfatnassi/Tunisian-Railway-Dialogues) — TuDiCoI converted from the academic XML into JSONL chat turns (`system`/`user`/`assistant`) by Kilma.ai, filtered 1,825 → **1,720** dialogues, with an added SNCFT-staff system prompt. CC-BY-4.0, 2026. Useful if you want TuDiCoI in a shape that drops straight into LLM fine-tuning; the underlying speech data is the entry above, so it is a repackaging rather than new collection.
 
 ### [IWSLT 2022 Tunisian Conversational Speech (LDC2022E01 / LDC2025S05)](https://catalog.ldc.upenn.edu/LDC2025S05)
 - Large three-way (audio + transcript + English translation) conversational telephone speech corpus, ~160–210h transcribed (CODA orthography), 8 kHz. Basis of the IWSLT dialectal speech-translation task.
@@ -87,6 +89,22 @@ Speech corpora (ASR, spoken language understanding, speech translation), text-to
 - ⚠️ **Flagged, not vouched for.** The repo has **no dataset card, no license, and no stated provenance** — the author `FARUKxAUTO` publishes nothing else identifying. Given the size, it may aggregate or re-clean existing corpora (TunSwitch, TEDxTN, Common Voice and others are all plausible components), which would mean it double-counts resources already listed above. **Anyone using it should establish provenance first**, and it is recorded here as an unverified entry rather than dropped, per this registry's practice of flagging uncertainty instead of hiding it.
 - Ungated, downloadable, parquet. **[open]** (access only; licence and provenance unstated).
 
+### [oddadmix/arabic-audio-collection-tunisian-deep-confessions](https://huggingface.co/datasets/oddadmix/arabic-audio-collection-tunisian-deep-confessions)
+- **37,156** transcribed chunks, ~20.0 GB, 16 kHz, segmented from a Tunisian YouTube confessional programme. Fields: `chunk_id`, `audio`, `transcript_text`, `duration`, `original_video_id`. Ahmed Wasfy (oddadmix), 2026.
+- **The register is the reason to care.** Transcripts are spontaneous, emotional, first-person speech with dense French/English code-switching and explicit paralinguistic markers (`<pause>`, `<noise>`) — e.g. *"ااه ردبلت وعاودت الباك اللول والباك الثاني خذيته مره ثالثه دونك `<pause>`"*. Nothing else listed here covers this register: TEDxTN is prepared oratory, TARIC/TuDiCoI are task-oriented service dialogues, LinTO is aggregated broadcast and podcast material.
+- Per-chunk `duration` is present but no aggregate hour count is published, so total duration is unstated rather than estimated here.
+- ⚠️ Licence is declared as `other` with **no terms given**, and the audio is YouTube-derived from a confessional show — speaker consent for onward redistribution is not documented. Establish terms before any published use.
+- Part of the wider [Arabic Voice Collection](https://huggingface.co/collections/oddadmix/arabic-voice-collection). **[open]** (access only; licence terms unstated).
+
+### [Fares11/senior_tunisian_voice](https://huggingface.co/datasets/Fares11/senior_tunisian_voice)
+- **5,377** rows, ~2.39 GB. Fields: `audio_id`, `audio`, `transcript`, plus a nested `segments` list carrying `start`/`end` and **both** `transcript` and `transcript_raw` per segment. Apache-2.0, 2026.
+- The dual normalised/raw transcript layer is the useful part: it makes the set usable for orthographic normalisation and Derja spelling-variation work, not only ASR. Transcripts are heavily code-switched Tunisian–French (*"و كانت شوية des cliques أنا حتى فال période لي فاتت طلعت مع taxist"*).
+- ⚠️ **No dataset card** beyond the YAML header: no stated provenance, speaker count, or collection method. Content references Tunisian media (Mosaïque FM among others), so it is plausibly broadcast- or podcast-sourced, but that is inference from the transcripts, not documentation. The repo name implies elderly speakers; **nothing in the repo confirms a senior-speaker demographic**, which would be a genuine gap-filler if it were documented.
+- **[open]** (Apache-2.0; provenance undocumented).
+
+### Undocumented community audio sets
+- [safara/TunisianOnly](https://huggingface.co/datasets/safara/TunisianOnly) — 2,243 `.wav` files under `audio_files/`, no parquet conversion. ⚠️ **No dataset card, no licence, and no transcripts of any kind**, so it cannot be used for supervised ASR as published; filenames (`100_00_17_1xh.wav`) look like speaker/segment identifiers, suggesting a diarisation or dialect-ID origin. Recorded here flagged rather than omitted. **[open]** (access only; no licence, no transcripts).
+
 ---
 
 ## Text-to-speech (TTS)
@@ -101,6 +119,8 @@ Speech corpora (ASR, spoken language understanding, speech translation), text-to
 ### Community and commercial Tunisian TTS
 - [SpeechGen Tunisian TTS (ar-TN)](https://speechgen.io/en/tts-arabic-tunisia/) — commercial text-to-speech with Tunisian voices (e.g., Hedi, Reem). Not open/research; noted for completeness. **[commercial]**.
 - Community fine-tunes and TTS-oriented sets on HuggingFace: the [Arbi-Houssem/Tunisian_dataset_STT-TTS](https://huggingface.co/datasets/Arbi-Houssem/Tunisian_dataset_STT-TTS15s_filtred1.0) series, [kalil99x/fixed-tts-tunisian](https://huggingface.co/datasets/kalil99x/fixed-tts-tunisian2) series (2025), [deepdml/Tunisian_MSA](https://huggingface.co/datasets/deepdml/Tunisian_MSA) (2026). **[open]** (quality varies).
+- [AnanOmri/hamza-belloumi-tunisian-tts](https://huggingface.co/datasets/AnanOmri/hamza-belloumi-tunisian-tts) — 1,784 single-voice clips (~415 MB) segmented from YouTube, 2026. ⚠️ **Tagged `text-to-speech` but ships an `audio` column and no transcript column at all**, so it cannot train TTS as published; it is unaligned audio. No licence declared, and it targets a named public figure's voice, which raises the same consent question the SILMA-Derja card addresses explicitly (see [MODELS.md](MODELS.md#tts-models)). **[open]** (access only; no transcripts, no licence).
+- [amenIKh/Tunisian_TTS](https://huggingface.co/amenIKh/Tunisian_TTS) — XTTS-v2 fine-tuned on ~2 h 30 of custom Tunisian audio, 2025. Card reports only training/eval **loss** (0.0274 / 0.0946), which says nothing about intelligibility or naturalness; no MOS, no WER-of-synthesis, no licence. **[open]** (weights; licence unstated).
 
 ---
 

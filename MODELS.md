@@ -90,11 +90,17 @@ Not Tunisian-specific — Tunisian appears only as part of pan-Arabic dialect da
 - ⚠️ **Not comparable to the SalahZa code-switched numbers above** — those are TunSwitch-CS, these are the NADI 2026 blind test. Different test sets, no shared reference point published.
 - ⚠️ **No license declared** on the repo (the base Whisper-large-v3 is Apache-2.0, but this fine-tune states nothing), and the card's usage snippet still points at a differently-named repo (`nadi2026-subtask1.3-...-faruk-v7`), so it appears to be a rename or mirror. Weights are present and ungated. **[open]** (weights; licence unstated).
 
+### [medfadiabaidi/whisper-small-tunisian-asr](https://huggingface.co/medfadiabaidi/whisper-small-tunisian-asr)
+- `openai/whisper-small` (244M) fine-tuned on [TEDxTN](SPEECH.md#speech-corpora-asr--slu--speech-translation). Declared in the card's `model-index`: **WER 37.99 / CER 18.77** on the TEDxTN test split. 2025.
+- **Why it is worth listing despite the modest score:** it is the only entry here reporting WER on the *TEDxTN test split*, so it supplies a reference point on a corpus that is open, code-switched, and widely available — unlike TARIC (on request) or the NADI blind sets (not public). The card cites TEDxTN as ~22 h against the ~25 h given in the corpus entry; the discrepancy is unexplained.
+- **It also ships the baseline it beat**, which is the more broadly useful artefact. `baseline_results.csv` commits **842 per-utterance** reference/prediction pairs across 6 TEDx talks for the pre-fine-tuning baseline on the same audio (inferred from the filename and from error levels far above the 37.99 reported for the fine-tune). Aggregated: **mean WER 110.1% / median 91.7%**, mean CER 79.8% / median 56.2%. **123 of 842** utterances exceed 100% WER, **41 exceed 200%**, and the worst reaches **2,642.9%** on a five-second segment. That file is the concrete evidence behind the out-of-the-box degradation note at the end of this section.
+- ⚠️ **No licence declared** (base `whisper-small` is Apache-2.0, but this fine-tune states nothing). Checkpoint shards and TensorBoard logs are committed alongside the final weights. **[open]** (weights; licence unstated).
+
 ### Classic ASR systems (papers)
 - [ASR system for Tunisian dialect (Kaldi, TARIC), LRE 2018](https://link.springer.com/article/10.1007/s10579-017-9402-y) — Masmoudi et al. WER 22.6% on TARIC. **[paywalled]** (preprint on [ResearchGate](https://www.researchgate.net/publication/319988998)).
 - [Tunisian Dialectal End-to-end ASR based on DeepSpeech (Procedia 2021)](https://www.sciencedirect.com/science/article/pii/S1877050921011984) — WER 24.4%. **[open]**.
 
-Note: general Arabic XLSR/Whisper models (e.g., jonatasgrosman/wav2vec2-large-xlsr-53-arabic) are used as Tunisian baselines but degrade sharply out-of-the-box (WER often 50–100%+). Not Tunisian-specific.
+Note: general Arabic XLSR/Whisper models (e.g., jonatasgrosman/wav2vec2-large-xlsr-53-arabic) are used as Tunisian baselines but degrade sharply out-of-the-box (WER often 50–100%+). Not Tunisian-specific. Published per-utterance evidence for this is scarce, but [`medfadiabaidi/whisper-small-tunisian-asr`](#medfadiabaidiwhisper-small-tunisian-asr) commits a `baseline_results.csv` of pre-fine-tuning `whisper-small` on TEDxTN audio, 842 utterances: **median WER 91.7%, mean 110.1%**. The mean sits above the median because the failure mode is not graceful degradation but **repetition-loop collapse** — 41 utterances exceed 200% WER and the worst reaches 2,642.9% on five seconds of audio. Worth knowing when picking a baseline: the untuned error rate is not merely high, it is unbounded above, so corpus-level averages over untuned Arabic Whisper are dominated by a handful of degenerate outputs rather than by typical performance.
 
 ---
 
@@ -116,10 +122,14 @@ Note: general Arabic XLSR/Whisper models (e.g., jonatasgrosman/wav2vec2-large-xl
 - [Habibi-TTS](https://github.com/SWivid/Habibi-TTS) — multi-dialect Arabic TTS; Tunisian coverage unconfirmed. **[open]**.
 - Community/commercial Tunisian TTS (SpeechGen, community fine-tunes) — see [SPEECH.md](SPEECH.md#text-to-speech-tts).
 
----
+### [Ghazouaniwala/silma-tts-derja](https://huggingface.co/Ghazouaniwala/silma-tts-derja-v2) (series)
+- F5-TTS Tunisian Derja fine-tunes of [silma-ai/silma-tts](https://huggingface.co/silma-ai/silma-tts), trained on the [LinTO Tunisian audio dataset](SPEECH.md#speech-corpora-asr--slu--speech-translation). Apache-2.0. Five repos uploaded Jul 2026: `silma-tts-derja`, `-v2`, `-v2-1`, `-v3a`, `-v4a`.
+- **Documented recipe, which is rare in this corner of the ecosystem.** The v2 card states the deliberate choices: `speaker_mode=single` (speaker `AbdelAzizErwi`), moderate text normalisation, SNR ≥ 15.0 dB audio-quality filtering, phonemisation disabled, 40 epochs — framed explicitly as improving the *signal* rather than the architecture. Ships both raw and EMA weights with an A/B note on which to deploy. Load via the F5-TTS v1.1.7 / SILMA pipeline (`model.pt` + `vocab.txt` + `config.yaml`).
+- Carries correct CC-BY attribution to the LinTO dataset ([arXiv:2504.02604](https://arxiv.org/abs/2504.02604)) and an explicit responsible-use clause requiring documented speaker consent for voice cloning — worth noting given how many voice datasets in this map ship neither.
+- ⚠️ **No evaluation published**: no MOS, no synthesis-WER, no A/B results despite the card referencing them. Treat as "Tunisian TTS trained on open Tunisian data with a legible recipe", not as validated quality. Version differences between v2/v3a/v4a are not documented.
+- **[open]** (Apache-2.0).
 
-### [Ghazouaniwala/silma-tts-derja (v1–v4a)](https://huggingface.co/Ghazouaniwala/silma-tts-derja)
-- F5-TTS-based Tunisian Derja text-to-speech; five checkpoints released 20–31 Jul 2026 (silma-tts-derja, -v2, -v2-1, -v3a, -v4a), Apache-2.0 (Ghazouaniwala). Community release; no published evaluation. **[open]**.
+---
 
 ### [Mui17/tunisian-xtts-v1](https://huggingface.co/Mui17/tunisian-xtts-v1)
 - XTTS-based Tunisian TTS, uploaded 14 Aug 2026, Apache-2.0 (Mui17). Community release; no published evaluation. **[open]**.
