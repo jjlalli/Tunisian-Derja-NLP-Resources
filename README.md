@@ -1,6 +1,6 @@
 # Tunisian Arabic NLP Resources
 
-![Entries](https://img.shields.io/badge/entries-150-blue) ![Open resources](https://img.shields.io/badge/open-90-brightgreen) ![License](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey) ![PRs welcome](https://img.shields.io/badge/PRs-welcome-orange) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21779464.svg)](https://doi.org/10.5281/zenodo.21779464)
+![Entries](https://img.shields.io/badge/entries-151-blue) ![Open resources](https://img.shields.io/badge/open-91-brightgreen) ![License](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey) ![PRs welcome](https://img.shields.io/badge/PRs-welcome-orange) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21779464.svg)](https://doi.org/10.5281/zenodo.21779464)
 
 A curated list of datasets, models, tools, and papers for the natural language processing of **Tunisian Arabic** (Tunisian Derja / Tounsi / تونسي, ISO 639-3 code **`aeb`**).
 
@@ -20,14 +20,14 @@ Multi-dialect and pan-Arabic resources are welcome; the map records the Tunisian
 
 | | Entries | Where |
 |---|---|---|
-| Text datasets, benchmarks, lexicons & papers | 71 | this file |
+| Text datasets, benchmarks, lexicons & papers | 72 | this file |
 | Speech corpora (ASR, SLU, translation, TTS) | 28 | [SPEECH.md](SPEECH.md) |
 | Pretrained models (LLMs, encoders, ASR, TTS, OCR) | 21 | [MODELS.md](MODELS.md) |
 | Researchers, labs & companies | 30 | [PEOPLE.md](PEOPLE.md) |
 
 *Counted as one `###` heading each, so the figures above sum to the entries badge and anyone can reproduce them with `grep -c '^### '`. Two caveats in opposite directions: a few headings group several related items (for example "Classic ASR systems (papers)"), which undercounts individual resources; and a handful of resources are cross-listed under a second category with a pointer to the full entry (PADIC, TArC), which counts them twice. The figure is a heading count, not a claim about distinct artifacts.*
 
-151 access tags are applied across the three resource files (recomputed 5 Sept 2026; reproduce with `grep -o '\*\*\[[a-z -]*\]\*\*' README.md SPEECH.md MODELS.md | sort | uniq -c`): **113 open** · 13 paywalled · 12 paper-only · 8 on request · 3 gated · 2 commercial. Some entries carry more than one tag (scripts open, underlying audio paywalled), so this counts tags rather than resources. At *entry* level, which is what the open badge tracks, `build-dataset-csv.py` resolves the same data to **90 open** of 120 parsed resource entries (grouped entries carrying several different tags are counted as "varies", not as open) — run the script to reproduce. Every entry links to a verifiable source; uncertain Tunisian coverage is flagged rather than dropped, and things checked and found to contain no Tunisian data are recorded under [Confirmed negatives](SPEECH.md#confirmed-negatives).
+152 access tags are applied across the three resource files (recomputed 8 Oct 2026; reproduce with `grep -o '\*\*\[[a-z -]*\]\*\*' README.md SPEECH.md MODELS.md | sort | uniq -c`): **114 open** · 13 paywalled · 12 paper-only · 8 on request · 3 gated · 2 commercial. Some entries carry more than one tag (scripts open, underlying audio paywalled), so this counts tags rather than resources. At *entry* level, which is what the open badge tracks, `build-dataset-csv.py` resolves the same data to **91 open** of 121 parsed resource entries (grouped entries carrying several different tags are counted as "varies", not as open) — run the script to reproduce. Every entry links to a verifiable source; uncertain Tunisian coverage is flagged rather than dropped, and things checked and found to contain no Tunisian data are recorded under [Confirmed negatives](SPEECH.md#confirmed-negatives).
 
 ## Recently added
 
@@ -35,7 +35,8 @@ Multi-dialect and pan-Arabic resources are welcome; the map records the Tunisian
 
 | Date | Entry | Added by |
 |---|---|---|
-| 2026-09 | Source re-check across the inventory: links, sizes, authors, years and licences corrected against the primary pages; two empty repos dropped; counts recomputed | [Fatma Jlali](https://github.com/jjlalli) |
+| 2026-10 | [TunisianMMLU-Verified](#tunisianmmlu-verified) — native-speaker audit of TunisianMMLU (MRL 2026, EMNLP workshop): two-annotator labels for a 400-item sample, corrected text for 333 items, marker flags for all 21,500; **86.0% of the sample defective after adjudication, 63.4% of the corpus flagged** | [Fatma Ezzahra Jlali](https://github.com/jjlalli) |
+| 2026-09 | Source re-check across the inventory: links, sizes, authors, years and licences corrected against the primary pages; two empty repos dropped; counts recomputed | [Fatma Ezzahra Jlali](https://github.com/jjlalli) |
 | 2026-09 | **First external pull request merged ([#1](https://github.com/jjlalli/Tunisian-Derja-NLP-Resources/pull/1)):** eight additions verified against live row counts and licences, five derivatives flagged under their parents, the untuned-Whisper note given a source, BibTeX URL fixed, counts recomputed — the six rows below | [Amine Troudi](https://github.com/aminetroudi) |
 | 2026-09 | [arabic-audio-collection-tunisian-deep-confessions](SPEECH.md#speech-corpora-asr--slu--speech-translation) — 37,156 transcribed chunks / ~20 GB of **spontaneous confessional speech** with paralinguistic markers; a register no other corpus here covers | [Amine Troudi](https://github.com/aminetroudi) |
 | 2026-09 | [silma-tts-derja series](MODELS.md#tts-models) — F5-TTS Derja TTS trained on LinTO-TN with a **fully documented recipe** (SNR filtering, single-speaker, 40 epochs); no eval published | [Amine Troudi](https://github.com/aminetroudi) |
@@ -434,8 +435,13 @@ The most useful openly available NER building blocks are the **Barcha** gazettee
 - Parallel Tunizi ↔ standard Tunisian ↔ English corpus with sentiment labels; benchmarks LLMs on transliteration, translation, sentiment. arXiv, Nov 2025. **[open]** (arXiv).
 
 ### [linagora/TunisianMMLU](https://huggingface.co/datasets/linagora/TunisianMMLU)
-- MMLU-style multiple-choice benchmark in Tunisian Derja: 22,027 questions (card figure) over 44 subjects, machine-translated from MMLU, ArabicMMLU and DarijaMMLU. LINAGORA, Feb 2025. CC BY-NC-SA 4.0.
+- MMLU-style multiple-choice benchmark in Tunisian Derja: 22,027 questions (card figure; 21,500 in the 44 test splits as downloaded in August 2026), machine-translated from MMLU, ArabicMMLU and DarijaMMLU. LINAGORA, Feb 2025. CC BY-NC-SA 4.0.
+- ⚠️ **Audited, 2026.** A two-annotator native-speaker audit ([TunisianMMLU-Verified](#tunisianmmlu-verified), below) judged 86.0% of a 400-item stratified sample defective after adjudication, and a corpus scan flags 63.4% of all items for Moroccan-dialect markers or translation-pipeline artefacts. Treat scores on the unmodified benchmark with that in mind; a corrected subset exists.
 - **[open]** (HuggingFace).
+
+### [TunisianMMLU-Verified](https://huggingface.co/datasets/fatmajlali/TunisianMMLU-Verified)
+- Native-speaker audit of TunisianMMLU: per-item labels from two independent annotators plus adjudication on a 400-item stratified sample (six binary criteria, verdict, error origin), corrected Derja text for the 333 repairable items, and a marker flag with repair-cost severity for all 21,500 items, keyed to the original `subject::row` ids so corrections can be merged upstream. Paper: *Is TunisianMMLU Actually Tunisian? A Native-Speaker Audit of a Machine-Translated Dialect Benchmark*, Jlali and Šuppa, MRL 2026 (EMNLP 2026 workshop). Code, scanner and evaluation harness: [jjlalli/tunisianmmlu-audit](https://github.com/jjlalli/tunisianmmlu-audit). Maintained by the author of this inventory.
+- **[open]** (Hugging Face and GitHub; labels and flags CC BY 4.0, corrected text CC BY-NC-SA 4.0 inherited from TunisianMMLU).
 
 ---
 
@@ -498,7 +504,7 @@ If this inventory is useful in your research, please cite it:
 
 ```bibtex
 @misc{jlali2026tunisiannlp,
-  author       = {Jlali, Fatma},
+  author       = {Jlali, Fatma Ezzahra},
   title        = {Tunisian Arabic {NLP} Resources},
   year         = {2026},
   howpublished = {\url{https://github.com/jjlalli/Tunisian-Derja-NLP-Resources}},
@@ -515,4 +521,4 @@ The list itself is released under [CC BY 4.0](LICENSE). The linked resources kee
 
 ---
 
-*Maintained by Fatma Jlali. Contributions and corrections welcome — see [CONTRIBUTING.md](CONTRIBUTING.md). Last compiled: September 2026.*
+*Maintained by Fatma Ezzahra Jlali. Contributions and corrections welcome — see [CONTRIBUTING.md](CONTRIBUTING.md). Last compiled: October 2026.*
